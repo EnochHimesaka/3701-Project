@@ -54,10 +54,12 @@ public class DialogueManager : MonoBehaviour
 
         if(id == 1)
         {
-            print("id = 1");
-            nameText.text = "6哥";
+            //print("id = 1");
+            nameText.text = "Noa";
+
         }
     }
+
 
     public void EndDialogue()
     {

@@ -49,7 +49,7 @@ public class Player_PickUP : MonoBehaviour
     {
         if(canTalkwith == true)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 dialoguePanel.SetActive(true);
                 print("DIALOGUE ");
