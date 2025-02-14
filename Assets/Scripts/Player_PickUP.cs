@@ -3,16 +3,12 @@ using UnityEngine.UI;
 
 public class Player_PickUP : MonoBehaviour
 {
-   
-    public GameObject Pickup_Box;
     public GameObject wrench;
     public GameObject OpenSwitch;
     public Text itemsText;
     public Image image;
- 
-    public Transform flashlightSlot; 
+    public Transform flashlightSlot;
     public GameObject flashlight;
-
 
     private bool isHoldingFlashlight = false;
     public bool canPickUp;
@@ -20,104 +16,69 @@ public class Player_PickUP : MonoBehaviour
 
     //------------ dialogue system variables
     public bool canTalkwith;
-    public GameObject convensationBox;
     public GameObject npc1;
     public GameObject dialoguePanel;
     public DialogueManager dialogue;
 
+    //------------ Crosshair UI
+    public Image crosshair;  // 绑定准星 UI
+    public Color defaultColor = new Color(1f, 1f, 1f, 0.1f); // 透明白色（默认状态）
+    public Color highlightColor = Color.red; // 交互时的颜色
 
-    //public int itemsNum; // 替换为图片
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         image.gameObject.SetActive(false);
+        if (crosshair != null)
+        {
+            SetCrosshairColor(defaultColor); // 确保准星初始颜色
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
         canPick();
-        Switch();
-
         canTalk();
     }
 
     public void canTalk()
     {
-        if(canTalkwith == true)
+        if (canTalkwith && Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                dialoguePanel.SetActive(true);
-                print("DIALOGUE ");
-                dialogue.DisplayNextSentence();
-
-            }
-        }
-
-        if(canTalkwith == false)
-        {
-            convensationBox.SetActive(false);
-        }
-
-        if (canTalkwith == true)
-        {
-            convensationBox.SetActive(true);
+            dialoguePanel.SetActive(true);
+            print("DIALOGUE ");
+            dialogue.DisplayNextSentence();
         }
     }
 
     void canPick()
     {
-        if(canPickUp == true)
+        if (canPickUp && Input.GetKeyDown(KeyCode.E))
         {
-            Pickup_Box.SetActive(true);
-        }
-        else
-        {
-            Pickup_Box.SetActive(false);
-        }
+            canPickUp = false;
+            print("PICK UP");
 
-        if(canPickUp == true)
-        {
-            if(Input.GetKeyDown(KeyCode.E))
+            if (wrench != null && wrench.CompareTag("items1"))
             {
-                canPickUp = false;
-                print("PICK UP");
-                if (wrench != null && wrench.CompareTag("items1"))
-                {
-                    
-                    Destroy(wrench);
-                    haswrench += 1;
-                    image.gameObject.SetActive(true);
-                    //itemsText.text = " ITEM O: " + itemsNum;
-                }
+                Destroy(wrench);
+                haswrench += 1;
+                image.gameObject.SetActive(true);
+            }
 
-                if (wrench != null && wrench.CompareTag("flashlight") && !isHoldingFlashlight)
-                {
-                    TryPickupFlashlight();
-                }
-
-
+            if (wrench != null && wrench.CompareTag("flashlight") && !isHoldingFlashlight)
+            {
+                TryPickupFlashlight();
             }
         }
     }
-
 
     void TryPickupFlashlight()
     {
         if (flashlight != null)
         {
-            // flashlight
             flashlight.transform.SetParent(flashlightSlot);
-
-            // postion
             flashlight.transform.localPosition = Vector3.zero;
             flashlight.transform.localRotation = Quaternion.identity;
 
-            // ban rgbody
             Rigidbody rb = flashlight.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -130,48 +91,45 @@ public class Player_PickUP : MonoBehaviour
         }
     }
 
-    void Switch()
-    {
-        //Pickup_Box.gameObject.SetActive(true);
-
-       // if(haswrench == 1) image.gameObject.SetActive(false); haswrench = 0;
-        
-
-     
-
-    }
-
-
-
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "items1" || other.tag == "flashlight")
+        if (other.CompareTag("items1") || other.CompareTag("flashlight"))
         {
             wrench = other.gameObject;
             canPickUp = true;
+            SetCrosshairColor(highlightColor); // 进入可拾取范围，准星变色
         }
 
-        if(other.tag == "npc1")
+        if (other.CompareTag("npc1"))
         {
             npc1 = other.gameObject;
             canTalkwith = true;
+            SetCrosshairColor(highlightColor); // 进入 NPC 交互范围，准星变色
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "items1" || other.tag == "flashlight")
+        if (other.CompareTag("items1") || other.CompareTag("flashlight"))
         {
             wrench = null;
             canPickUp = false;
+            SetCrosshairColor(defaultColor); // 离开拾取范围，准星恢复
         }
-        if (other.tag == "npc1")
+        if (other.CompareTag("npc1"))
         {
             npc1 = null;
             canTalkwith = false;
+            SetCrosshairColor(defaultColor); // 离开 NPC 交互范围，准星恢复
         }
     }
 
-
+    // 统一修改准星颜色的方法
+    private void SetCrosshairColor(Color color)
+    {
+        if (crosshair != null)
+        {
+            crosshair.color = color;
+        }
+    }
 }
