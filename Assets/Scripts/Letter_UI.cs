@@ -1,22 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI; // 确保引入 UI 命名空间
 
-public class Letter_UI : MonoBehaviour
+public class Letter_UI : Interactable  // 继承 Interactable
 {
     public GameObject paperUI;  // 绑定 UI 面板
-    public Image crosshair;  // 绑定准星 UI
-    public Color defaultColor = new Color(1f, 1f, 0.5f, 0.1f); // 浅黄白色，10% 透明
-    public Color highlightColor = Color.red; // 交互时的颜色
-
     private bool isPlayerNearby = false;
 
     void Start()
     {
         paperUI.SetActive(false); // 确保 UI 初始时是隐藏的
-        if (crosshair != null)
-        {
-            SetUIAlpha(crosshair, 0.1f); // 让准星变透明
-        }
     }
 
     void Update()
@@ -42,43 +34,22 @@ public class Letter_UI : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    // 复写 Interactable 的 OnTriggerEnter 以增加额外的功能
+    protected override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other); // 让准星变色
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = true;
-            if (crosshair != null)
-            {
-                crosshair.color = highlightColor; // 进入交互范围时变色
-                SetUIAlpha(crosshair, 1f); // 交互时变成不透明
-            }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected override void OnTriggerExit(Collider other)
     {
+        base.OnTriggerExit(other); // 让准星恢复默认颜色
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = false;
-            paperUI.SetActive(false); // 离开时自动关闭 UI
-            Time.timeScale = 1f; // 继续游戏
-
-            if (crosshair != null)
-            {
-                crosshair.color = defaultColor; // 离开交互范围时恢复颜色
-                SetUIAlpha(crosshair, 0.01f); // 让准星恢复透明
-            }
-        }
-    }
-
-    // 设置 UI Image 透明度的方法
-    private void SetUIAlpha(Image img, float alpha)
-    {
-        if (img != null)
-        {
-            Color newColor = img.color;
-            newColor.a = alpha; // 只修改透明度
-            img.color = newColor;
         }
     }
 }
