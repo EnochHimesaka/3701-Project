@@ -1331,7 +1331,6 @@ GameObject:
   - component: {fileID: 761305541}
   - component: {fileID: 761305543}
   - component: {fileID: 761305544}
-  - component: {fileID: 761305545}
   m_Layer: 6
   m_Name: npcTrigger
   m_TagString: Untagged
@@ -1369,7 +1368,6 @@ MonoBehaviour:
   dialogue:
     name: TEST
     sentences:
-    - 
     - "Boy: Hey, ____, it\u2019s so surprising to see you here. Am I dreaming!"
     - "girl : That\u2019s also surprising to me. I don\u2019t even know you are working
       in this store."
@@ -1393,6 +1391,7 @@ MonoBehaviour:
     - 'Boy: OK, thank you.'
     - "Girl: It\u2019s getting dark. I must go home, or my parents will be worried
       about me. It\u2019s very happy to talk with you, see you tomorrow at school."
+    - 
 --- !u!65 &761305544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1414,21 +1413,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &761305545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761305540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e7bb1d1c9c236b4781591e0d9ae367b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crosshair: {fileID: 0}
-  interactPrompt: {fileID: 766303215}
-  paperUI: {fileID: 961286373}
 --- !u!1 &766303215
 GameObject:
   m_ObjectHideFlags: 0
