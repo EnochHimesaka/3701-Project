@@ -11,6 +11,10 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public GameObject DialoguePanel;
 
+    public float typingSpeed = 0.05f;  // 自定义文本显示速度
+    private Coroutine typingCoroutine;
+    private bool isTyping = false;  // 用于检测是否正在打字
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +47,15 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        if (isTyping)
+        {
+            // 如果正在打字，直接跳过，显示完整句子
+            StopCoroutine(typingCoroutine);
+            dialogueText.text = sentences.Peek(); // 显示完整的当前句子
+            isTyping = false;
+            return;
+        }
+
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -50,25 +63,35 @@ public class DialogueManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
 
-        if(id == 1)
+        if (id == 1)
         {
-            //print("id = 1");
             nameText.text = "Noa";
-
         }
+
+        // 开始打字机效果
+        typingCoroutine = StartCoroutine(TypeSentence(sentence));
     }
 
+    IEnumerator TypeSentence(string sentence)
+    {
+        isTyping = true;
+        dialogueText.text = "";
+
+        foreach (char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        isTyping = false;
+    }
 
     public void EndDialogue()
     {
- 
         if (id == 1)
         {
             DialoguePanel.SetActive(false);
         }
-
-        
-    } 
+    }
 }
