@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Body
-    second: {fileID: 2100000, guid: be23cfc5473d31c40bda0430302eeadb, type: 2}
+    second: {fileID: 2100000, guid: e86e3e65e539d7140a3fad95baa42757, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK EyeL (hitomi)
-    second: {fileID: 2100000, guid: 86a1418a002b68748bf0de783f5dd0b3, type: 2}
+    second: {fileID: 2100000, guid: 97e3ccf3122969645b62cea624beb60d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK EyeR (hitomi)
-    second: {fileID: 2100000, guid: 05bdffe18c4efbb419d3f0bc8c3e1026, type: 2}
+    second: {fileID: 2100000, guid: 80a49a537bae17c4e952e940239007f4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Eyebrows (mayuge)
-    second: {fileID: 2100000, guid: 1b6c8f26fc372c3468c2f83b80cf2b36, type: 2}
+    second: {fileID: 2100000, guid: 19f065b0a029a474eb88df0a33a2f8f8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -33,7 +33,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Eyeline up
-    second: {fileID: 2100000, guid: 61ac44d5822101a48a5b7e94ca3f75a0, type: 2}
+    second: {fileID: 2100000, guid: f27fc00689d1afb40b164a45ee1d96af, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -43,42 +43,42 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Face
-    second: {fileID: 2100000, guid: c34e1dc6e4b044440b8b7988ba6faab3, type: 2}
+    second: {fileID: 2100000, guid: ebf19fbd6c5073a4eb655470a35bf097, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Gag00
-    second: {fileID: 2100000, guid: c8ac0ba2db3519840aae6cd841342d39, type: 2}
+    second: {fileID: 2100000, guid: 1297996db8668094295a41a85bbd5910, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Gag01
-    second: {fileID: 2100000, guid: 74088fe09c1778d4989d7f8e5cc7302e, type: 2}
+    second: {fileID: 2100000, guid: 7ccdf26b760d1fc45b76f47223ecf8ac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Gag02
-    second: {fileID: 2100000, guid: a63a57ebbecef2948a09ed30ba7edfd6, type: 2}
+    second: {fileID: 2100000, guid: 359412c2d4574004db726eceee6aebac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Nose
-    second: {fileID: 2100000, guid: aa5f02bcf5a71be4dbf689f31d029963, type: 2}
+    second: {fileID: 2100000, guid: 431fb99b6312d884a94c9ca95835a53e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Tears
-    second: {fileID: 2100000, guid: 1f6aa2b3eacd29f4dbec361a85f2f445, type: 2}
+    second: {fileID: 2100000, guid: 8e9630da60ca749498f3856190941e0d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Teeth (tooth)
-    second: {fileID: 2100000, guid: 0ea59ffc53b60c542a34905385a0afd3, type: 2}
+    second: {fileID: 2100000, guid: 6695670be2d182c48abed13b5a0fcb3b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Tongue
-    second: {fileID: 2100000, guid: 8b5233be3de37ec43b317ca94260a2b6, type: 2}
+    second: {fileID: 2100000, guid: 350a44377cfd6aa4aa05b9d4b2b2bf6a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
