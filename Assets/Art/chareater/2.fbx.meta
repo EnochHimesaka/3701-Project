@@ -3,9 +3,174 @@ guid: 4c12428a436380849aca1ac8ea22cba3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Body
+    second: {fileID: 2100000, guid: 65201e98a951a834fb893f03ed512b6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK EyeL (hitomi)
+    second: {fileID: 2100000, guid: 03e697949c30b6d4db3d9e01ff71a303, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK EyeR (hitomi)
+    second: {fileID: 2100000, guid: e11056abc2ab6d845b276b2d281b0cba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Eyebrows (mayuge)
+    second: {fileID: 2100000, guid: 2196713a2aaae744481d335fc55d164f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Eyeline down
+    second: {fileID: 2100000, guid: 271b941f9fa4e3447a3fb8006f17144d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Eyeline up
+    second: {fileID: 2100000, guid: 081c1f0c36c49f64ead3ddc0c2f5b693, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Eyewhites (sirome)
+    second: {fileID: 2100000, guid: c432963e4fb455048aa3772a78dafd7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Face
+    second: {fileID: 2100000, guid: 31ebba4151dab304e9d22f79013a6626, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Gag00
+    second: {fileID: 2100000, guid: 1fc0b0551f232c6419b4ae3d125c01de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Gag01
+    second: {fileID: 2100000, guid: b046e12dffcdd4f42af13856a1e033c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Gag02
+    second: {fileID: 2100000, guid: a63a57ebbecef2948a09ed30ba7edfd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Nose
+    second: {fileID: 2100000, guid: a4a58db4176d4af4c8190bf43e29260c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Tears
+    second: {fileID: 2100000, guid: 76979fa2385cb724cbf86ed1da76695e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Teeth (tooth)
+    second: {fileID: 2100000, guid: 62bec35c804ae1f469c2845805a00b98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK Tongue
+    second: {fileID: 2100000, guid: d9192677f122f5940bc198ee2e17f459, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK acs_m_ribbon_hoso1 3270
+    second: {fileID: 2100000, guid: b3509f7d27849a9408b1fd0deeb63bc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_bra_01 9210
+    second: {fileID: 2100000, guid: 877a11b3b1368fd4f929fea831a800db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_b_113_00 4150
+    second: {fileID: 2100000, guid: 2541f6e53603f5b4fbea73fd9a14157c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_b_113_00 4150 00
+    second: {fileID: 2100000, guid: 0583b5d2aad50f044a97344b5d3c80e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_b_113_00 4150 01
+    second: {fileID: 2100000, guid: 0583b5d2aad50f044a97344b5d3c80e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_b_113_00 4150 02
+    second: {fileID: 2100000, guid: 99bd1ab5e2fbb2d47a8b85a2ab16da19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_f_1_00 4460
+    second: {fileID: 2100000, guid: 9c0ee3efb7e8b854a89147742f1eda19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_f_1_00 4460 00
+    second: {fileID: 2100000, guid: a336316e88470d8479128783883d74a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_f_1_00 4460 01
+    second: {fileID: 2100000, guid: 7567843182b6b4849a04c03c8cbbf78a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_f_1_00 4460 02
+    second: {fileID: 2100000, guid: 9cacc10ab13fa3c4d90eb0bf981f21e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_f_1_00 4460 03
+    second: {fileID: 2100000, guid: 42911b093d02663408f6dc5e4224d9b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_s_02_00 4690
+    second: {fileID: 2100000, guid: 42911b093d02663408f6dc5e4224d9b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_hair_s_ribon_02_00 4690
+    second: {fileID: 2100000, guid: 68293d4e83d3ff14ea20e94b7d7af1b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_shoes_uwabaki01 9550
+    second: {fileID: 2100000, guid: 8d1b6e6719b2b8f4f8c71394d8baabcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_shorts_01 9310
+    second: {fileID: 2100000, guid: 64d004f8eff9228469c9cdb07cf1c461, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_socks_knee01 9430
+    second: {fileID: 2100000, guid: 2aa5a1e6918ae8e46a0183088fcd53ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK cf_m_top_saropet 9130
+    second: {fileID: 2100000, guid: bd3591d5e2210b640a775e926763684e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KK m_cf_top_heroine_sun00 9030
+    second: {fileID: 2100000, guid: 1b6de2a19c58614418c4c82fee64faf1, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
