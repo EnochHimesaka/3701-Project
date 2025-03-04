@@ -163,7 +163,7 @@ namespace StarterAssets
 
         private void LateUpdate()
         {
-            CameraRotation();
+            //CameraRotation();
         }
 
         private void AssignAnimationIDs()
@@ -190,26 +190,26 @@ namespace StarterAssets
             }
         }
 
-        private void CameraRotation()
-        {
-            // if there is an input and camera position is not fixed
-            if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
-            {
-                //Don't multiply mouse input by Time.deltaTime;
-                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+        //private void CameraRotation()
+        //{
+        //    // if there is an input and camera position is not fixed
+        //    if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
+        //    {
+        //        //Don't multiply mouse input by Time.deltaTime;
+        //        float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
-                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
-            }
+        //        _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
+        //        _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
+        //    }
 
-            // clamp our rotations so our values are limited 360 degrees
-            _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
-            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+        //    // clamp our rotations so our values are limited 360 degrees
+        //    _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
+        //    _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
-            // Cinemachine will follow this target
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
-                _cinemachineTargetYaw, 0.0f);
-        }
+        //    // Cinemachine will follow this target
+        //    CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
+        //        _cinemachineTargetYaw, 0.0f);
+        //}
 
         private void Move()
         {
@@ -251,8 +251,8 @@ namespace StarterAssets
             // normalise input direction
             Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
-            // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-            // if there is a move input rotate player when the player is moving
+        //note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+             //if there is a move input rotate player when the player is moving
             if (_input.move != Vector2.zero)
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
@@ -261,7 +261,7 @@ namespace StarterAssets
                     RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                //transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
             }
 
 

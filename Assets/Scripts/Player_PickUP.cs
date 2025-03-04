@@ -20,17 +20,17 @@ public class Player_PickUP : MonoBehaviour
     public GameObject dialoguePanel;
     public DialogueManager dialogue;
 
-    //------------ Crosshair UI
-    public Image crosshair;  // 绑定准星 UI
-    public Color defaultColor = new Color(1f, 1f, 1f, 0.1f); // 透明白色（默认状态）
-    public Color highlightColor = Color.red; // 交互时的颜色
+    //------------ 交互图标 UI（新增）
+    public GameObject interactIcon; // 绑定交互图标（例如“按E交互”UI）
 
     void Start()
     {
         image.gameObject.SetActive(false);
-        if (crosshair != null)
+
+        // **初始隐藏交互图标**
+        if (interactIcon != null)
         {
-            SetCrosshairColor(defaultColor); // 确保准星初始颜色
+            interactIcon.SetActive(false);
         }
     }
 
@@ -97,14 +97,24 @@ public class Player_PickUP : MonoBehaviour
         {
             wrench = other.gameObject;
             canPickUp = true;
-            SetCrosshairColor(highlightColor); // 进入可拾取范围，准星变色
+
+            // **进入拾取范围时，显示交互图标**
+            if (interactIcon != null)
+            {
+                interactIcon.SetActive(true);
+            }
         }
 
         if (other.CompareTag("npc1"))
         {
             npc1 = other.gameObject;
             canTalkwith = true;
-            SetCrosshairColor(highlightColor); // 进入 NPC 交互范围，准星变色
+
+            // **进入 NPC 交互范围时，显示交互图标**
+            if (interactIcon != null)
+            {
+                interactIcon.SetActive(true);
+            }
         }
     }
 
@@ -114,22 +124,24 @@ public class Player_PickUP : MonoBehaviour
         {
             wrench = null;
             canPickUp = false;
-            SetCrosshairColor(defaultColor); // 离开拾取范围，准星恢复
+
+            // **离开拾取范围时，隐藏交互图标**
+            if (interactIcon != null)
+            {
+                interactIcon.SetActive(false);
+            }
         }
+
         if (other.CompareTag("npc1"))
         {
             npc1 = null;
             canTalkwith = false;
-            SetCrosshairColor(defaultColor); // 离开 NPC 交互范围，准星恢复
-        }
-    }
 
-    // 统一修改准星颜色的方法
-    private void SetCrosshairColor(Color color)
-    {
-        if (crosshair != null)
-        {
-            crosshair.color = color;
+            // **离开 NPC 交互范围时，隐藏交互图标**
+            if (interactIcon != null)
+            {
+                interactIcon.SetActive(false);
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Body
-    second: {fileID: 2100000, guid: e86e3e65e539d7140a3fad95baa42757, type: 2}
+    second: {fileID: 2100000, guid: be23cfc5473d31c40bda0430302eeadb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -43,7 +43,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: KK Face
-    second: {fileID: 2100000, guid: ebf19fbd6c5073a4eb655470a35bf097, type: 2}
+    second: {fileID: 2100000, guid: 31ebba4151dab304e9d22f79013a6626, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

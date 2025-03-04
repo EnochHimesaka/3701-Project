@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
         GatherInput();
         Move();
         Look();
+
+        
     }
 
     private void GatherInput()
@@ -79,4 +81,5 @@ public class PlayerController : MonoBehaviour
         // 应用垂直旋转（只更新相机的 X 轴）
         cameraTransform.localEulerAngles = new Vector3(currentVerticalAngle, 0, 0);
     }
+   
 }
