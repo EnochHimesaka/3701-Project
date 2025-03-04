@@ -46,7 +46,7 @@ public class Player_PickUP : MonoBehaviour
         {
             dialoguePanel.SetActive(true);
             print("DIALOGUE ");
-            dialogue.DisplayNextSentence();
+            //dialogue.DisplayNextSentence();
         }
     }
 

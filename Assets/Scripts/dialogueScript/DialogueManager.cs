@@ -11,17 +11,11 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public GameObject DialoguePanel;
 
-    public float typingSpeed = 0.05f;  // 自定义文本显示速度
+    public float typingSpeed = 0.05f;  // 打字速度
+    public float sentenceDelay = 1.5f; // 句子播放完后等待时间
     private Coroutine typingCoroutine;
-    private bool isTyping = false;  // 用于检测是否正在打字
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Cursor.visible = false;
-        //Cursor.lockState = CursorLockMode.Locked;
-
-    }
+    private bool isTyping = false;  // 是否正在打字
+    private bool isDialogueActive = false; // 对话是否进行中
 
     void Awake()
     {
@@ -30,10 +24,13 @@ public class DialogueManager : MonoBehaviour
 
         sentences = new Queue<string>();
         id = 0;
-    }  
+    }
 
     public void StartDialogue(Dialogue dialogue)
     {
+        if (isDialogueActive) return; // 防止重复触发对话
+
+        isDialogueActive = true;
         nameText.text = dialogue.name;
         sentences.Clear();
 
@@ -42,20 +39,25 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
+        DialoguePanel.SetActive(true);
+        Debug.Log("开始对话：" + dialogue.name);
+
+        // **等待玩家按 E 触发第一句话**
+        StartCoroutine(WaitForFirstInput());
+    }
+
+    IEnumerator WaitForFirstInput()
+    {
+        while (!Input.GetKeyDown(KeyCode.E))
+        {
+            yield return null; // 等待玩家按 E
+        }
+
+        DisplayNextSentence(); // 触发第一句
     }
 
     public void DisplayNextSentence()
     {
-        if (isTyping)
-        {
-            // 如果正在打字，直接跳过，显示完整句子
-            StopCoroutine(typingCoroutine);
-            dialogueText.text = sentences.Peek(); // 显示完整的当前句子
-            isTyping = false;
-            return;
-        }
-
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -69,8 +71,24 @@ public class DialogueManager : MonoBehaviour
             nameText.text = "Noa";
         }
 
-        // 开始打字机效果
+        // **第一句话之后，自动播放剩下的句子**
+        StartCoroutine(DisplayNextSentenceAuto(sentence));
+    }
+
+    IEnumerator DisplayNextSentenceAuto(string sentence)
+    {
         typingCoroutine = StartCoroutine(TypeSentence(sentence));
+        yield return typingCoroutine; // 等待当前句子播放完
+        yield return new WaitForSeconds(sentenceDelay); // 额外等待时间
+
+        if (sentences.Count > 0)
+        {
+            DisplayNextSentence(); // 自动播放下一句
+        }
+        else
+        {
+            EndDialogue();
+        }
     }
 
     IEnumerator TypeSentence(string sentence)
@@ -89,9 +107,8 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        if (id == 1)
-        {
-            DialoguePanel.SetActive(false);
-        }
+        Debug.Log("对话结束，隐藏对话框");
+        DialoguePanel.SetActive(false);
+        isDialogueActive = false;
     }
 }

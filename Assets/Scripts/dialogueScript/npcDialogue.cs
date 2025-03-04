@@ -1,31 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class npcDialogue : MonoBehaviour
 {
     public Dialogue dialogue;
-    //public bool isDialogue = false;
+    private bool canTalk = false; // 玩家是否可以交谈
+    private bool hasTalked = false; // 是否已经对话过
+    public bool canTalkAgain = false; // 任务解锁后可重新对话
 
     private void OnTriggerEnter(Collider other)
     {
-        switch (transform.parent.tag)
+        if (other.CompareTag("Player"))
         {
-            case "npc1":
-              
-                DialogueManager.id = 1;
-                break;
-            case "npc2":
-                DialogueManager.id = 2;
-                break;
+            canTalk = true; // 允许交互
+        }
+    }
 
-        }
-        if (other.CompareTag("Player"))// && isDialogue == false
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
-           
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-            //isDialogue = true;
+            canTalk = false; // 玩家离开，取消交互
         }
+    }
+
+    private void Update()
+    {
+        if (canTalk && Input.GetKeyDown(KeyCode.E) && !hasTalked)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            hasTalked = true; // 标记已经对话
+        }
+    }
+
+    public void UnlockNewDialogue()
+    {
+        canTalkAgain = true;
+        hasTalked = false; // 允许新对话
     }
 }
