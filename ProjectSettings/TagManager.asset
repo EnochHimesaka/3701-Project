@@ -8,6 +8,8 @@ TagManager:
   - flashlight
   - npc
   - npc1
+  - CinemachineTarget
+  - powerswitch
   layers:
   - Default
   - TransparentFX
