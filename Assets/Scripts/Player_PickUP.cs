@@ -52,6 +52,10 @@ public class Player_PickUP : MonoBehaviour
         {
             dialoguePanel.SetActive(true);
             print("DIALOGUE ");
+<<<<<<< HEAD
+=======
+            dialogue.DisplayNextSentence();
+>>>>>>> 08ca700ce9ab9caaed22c857773c27a768b9de9e
         }
     }
 
