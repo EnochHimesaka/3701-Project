@@ -8,9 +8,6 @@ TagManager:
   - flashlight
   - npc
   - npc1
-  - CinemachineTarget
-  - PuzzleTrigger
-  - powerswitch
   layers:
   - Default
   - TransparentFX

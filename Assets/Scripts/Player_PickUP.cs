@@ -20,13 +20,8 @@ public class Player_PickUP : MonoBehaviour
     public GameObject dialoguePanel;
     public DialogueManager dialogue;
 
-    //------------ 交互图标 UI
-    public GameObject interactIcon; // 交互提示 UI（例如“按E交互”）
-
-    //------------ 电路谜题 UI
-    public GameObject puzzleUI;
-    private bool canSolvePuzzle = false; // 是否可以解谜
-    private GameObject currentSwitch; // 当前触发的 `powerswitch`
+    //------------ 交互图标 UI（新增）
+    public GameObject interactIcon; // 绑定交互图标（例如“按E交互”UI）
 
     void Start()
     {
@@ -43,7 +38,6 @@ public class Player_PickUP : MonoBehaviour
     {
         canPick();
         canTalk();
-        canSolveCircuitPuzzle();
     }
 
     public void canTalk()
@@ -52,10 +46,9 @@ public class Player_PickUP : MonoBehaviour
         {
             dialoguePanel.SetActive(true);
             print("DIALOGUE ");
-<<<<<<< HEAD
-=======
+
             dialogue.DisplayNextSentence();
->>>>>>> 08ca700ce9ab9caaed22c857773c27a768b9de9e
+
         }
     }
 
@@ -100,14 +93,6 @@ public class Player_PickUP : MonoBehaviour
         }
     }
 
-    void canSolveCircuitPuzzle()
-    {
-        if (canSolvePuzzle && Input.GetKeyDown(KeyCode.E))
-        {
-            TogglePuzzle();
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("items1") || other.CompareTag("flashlight"))
@@ -128,18 +113,6 @@ public class Player_PickUP : MonoBehaviour
             canTalkwith = true;
 
             // **进入 NPC 交互范围时，显示交互图标**
-            if (interactIcon != null)
-            {
-                interactIcon.SetActive(true);
-            }
-        }
-
-        if (other.CompareTag("powerswitch"))
-        {
-            canSolvePuzzle = true;
-            currentSwitch = other.gameObject;
-
-            // **显示交互 UI**
             if (interactIcon != null)
             {
                 interactIcon.SetActive(true);
@@ -172,32 +145,5 @@ public class Player_PickUP : MonoBehaviour
                 interactIcon.SetActive(false);
             }
         }
-
-        if (other.CompareTag("powerswitch"))
-        {
-            canSolvePuzzle = false;
-            currentSwitch = null;
-
-            // **隐藏交互 UI**
-            if (interactIcon != null)
-            {
-                interactIcon.SetActive(false);
-            }
-        }
-    }
-
-    void TogglePuzzle()
-    {
-        if (puzzleUI == null)
-        {
-            Debug.LogError("Puzzle UI 没有绑定，请检查 Player_PickUP 组件！");
-            return;
-        }
-
-        bool isActive = puzzleUI.activeSelf;
-        puzzleUI.SetActive(!isActive);
-        Time.timeScale = isActive ? 1 : 0; // 暂停或恢复游戏
-
-        Debug.Log("Puzzle UI 状态：" + puzzleUI.activeSelf);
     }
 }
