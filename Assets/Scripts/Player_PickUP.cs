@@ -22,7 +22,8 @@ public class Player_PickUP : MonoBehaviour
 
     //------------ 交互图标 UI（新增）
     public GameObject interactIcon; // 绑定交互图标（例如“按E交互”UI）
-
+    private bool isNearElectricalBox = false;
+    private ElectricalBoxPuzzle currentPuzzle; // 电箱解谜
     void Start()
     {
         image.gameObject.SetActive(false);
@@ -38,6 +39,11 @@ public class Player_PickUP : MonoBehaviour
     {
         canPick();
         canTalk();
+
+        if (isNearElectricalBox && Input.GetKeyDown(KeyCode.E) && currentPuzzle != null)
+        {
+            currentPuzzle.StartPuzzle(); // 触发解谜
+        }
     }
 
     public void canTalk()
@@ -116,6 +122,14 @@ public class Player_PickUP : MonoBehaviour
                 interactIcon.SetActive(true);
             }
         }
+
+        if (other.CompareTag("ElectricalBox"))
+        {
+            isNearElectricalBox = true;
+            currentPuzzle = other.GetComponent<ElectricalBoxPuzzle>(); // 获取电箱解谜脚本
+
+            if (interactIcon != null) interactIcon.SetActive(true);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -142,6 +156,14 @@ public class Player_PickUP : MonoBehaviour
             {
                 interactIcon.SetActive(false);
             }
+        }
+
+        if (other.CompareTag("ElectricalBox"))
+        {
+            isNearElectricalBox = false;
+            currentPuzzle = null;
+
+            if (interactIcon != null) interactIcon.SetActive(false);
         }
     }
 }
