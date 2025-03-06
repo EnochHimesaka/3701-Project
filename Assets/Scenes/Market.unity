@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d94146056d211a34184c60935864a3ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.72
+      value: 1.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d94146056d211a34184c60935864a3ec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c12428a436380849aca1ac8ea22cba3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08200002
+      value: 1.918
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c12428a436380849aca1ac8ea22cba3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -648,7 +648,7 @@ Transform:
   m_GameObject: {fileID: 358510226}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.19, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 10.057, y: 10.057, z: 10.057}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.061
+      value: 1.939
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -994,7 +994,7 @@ Transform:
   m_GameObject: {fileID: 439898862}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.86, y: 6.55, z: 10.422}
+  m_LocalPosition: {x: -1.86, y: 8.55, z: 10.422}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1025,7 +1025,7 @@ Transform:
   m_GameObject: {fileID: 459600086}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13562249, y: 1.384277, z: 13.29325}
+  m_LocalPosition: {x: -0.13562249, y: 3.3842769, z: 13.29325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1253,7 +1253,7 @@ Transform:
   m_GameObject: {fileID: 532428493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1616,7 +1616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: TEST
+    name: SHERRI
     sentences:
     - "Boy: Hey, ____, it\u2019s so surprising to see you here. Am I dreaming!"
     - "girl : That\u2019s also surprising to me. I don\u2019t even know you are working
@@ -1625,23 +1625,7 @@ MonoBehaviour:
     - 'Boy: Well, this store is owned by my family, and the uncle and the aunt are
       my parents. They are out for business.'
     - 'Boy: Seems that you are looking for something, how can I help you?'
-    - 'Girl: I want to buy some drinks and some snacks for the event this weekend.'
-    - 'Boy: It sounds great, can I come to your event?'
-    - 'Girl: Of course! What kind of drink do you recommend?'
-    - "Boy: I recommend peach sparkling juice. That\u2019s the best-selling drink
-      in the store."
-    - 'Boy: And you can bring some almond chocolate cookies and potato chips. They
-      are in the sale.'
-    - "Girl: All right. I\u2019ll take them."
-    - 'Boy: By the way. What do you think of the math homework today, I am brainstorming.'
-    - "Girl: That\u2019s so easy. I have always suggested you take some more time
-      on math."
-    - "Girl: I can\u2019t tell you the answer, but I can tell you that the questions
-      are all like the example questions, just changing the numbers."
-    - 'Boy: OK, thank you.'
-    - "Girl: It\u2019s getting dark. I must go home, or my parents will be worried
-      about me. It\u2019s very happy to talk with you, see you tomorrow at school."
-    - 
+  canTalkAgain: 0
 --- !u!65 &761305544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1765,7 +1749,7 @@ RectTransform:
   m_GameObject: {fileID: 868757795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 24.671154, y: 12.455229, z: 13.369}
+  m_LocalScale: {x: 27.79699, y: 14.1167555, z: 13.369}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1901448826}
@@ -1839,7 +1823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b4e54230081a6548b298316e52f2460, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -60
+      value: -58
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b4e54230081a6548b298316e52f2460, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2184,7 +2168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b0ffd9daa76703d41b54beecbac3a7e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.31
+      value: 2.31
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b0ffd9daa76703d41b54beecbac3a7e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2312,7 +2296,7 @@ Transform:
   m_GameObject: {fileID: 1119517523}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 13.34}
+  m_LocalPosition: {x: 0, y: 3, z: 13.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2506,7 +2490,7 @@ Transform:
   m_GameObject: {fileID: 1136349367}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2841,8 +2825,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.5056796, y: 1.1815436, z: 1.5260965}
-  m_Center: {x: 1.7528393, y: -0.051751733, z: 0.0015629276}
+  m_Size: {x: 6.8776054, y: 1.1815436, z: 1.5260965}
+  m_Center: {x: 2.9388003, y: -0.051751733, z: 0.0015629276}
 --- !u!23 &1286305282
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3133,7 +3117,7 @@ Transform:
   m_GameObject: {fileID: 1519117145}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7700982, y: 15.410879, z: 3.5049076}
+  m_LocalPosition: {x: -1.7700982, y: 17.41088, z: 3.5049076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3243,7 +3227,7 @@ Transform:
   m_GameObject: {fileID: 1562551872}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6433941, z: -0, w: 0.7655352}
-  m_LocalPosition: {x: -3.8043776, y: -0.12, z: 3.3267508}
+  m_LocalPosition: {x: 0.35, y: -0.12, z: 5.37}
   m_LocalScale: {x: 0.09999999, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3347,7 +3331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.09
+      value: 0.90999997
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3583,7 +3567,7 @@ Transform:
   m_GameObject: {fileID: 1691270973}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.6143775, y: 0.231, z: 2.8867502}
+  m_LocalPosition: {x: -7.6143775, y: 0.231, z: 5.29}
   m_LocalScale: {x: 0.945436, y: 0.17617743, z: 0.16779028}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3851,7 +3835,7 @@ Transform:
   m_GameObject: {fileID: 1893743016}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7015965, z: -0, w: 0.71257454}
-  m_LocalPosition: {x: -1.5750461, y: 0.96, z: 16.539165}
+  m_LocalPosition: {x: 1.844, y: 2.96, z: 11.738}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3985,6 +3969,7 @@ MonoBehaviour:
   dialogueText: {fileID: 576270379}
   DialoguePanel: {fileID: 473671045}
   typingSpeed: 0.05
+  sentenceDelay: 1.5
 --- !u!1 &2144079491
 GameObject:
   m_ObjectHideFlags: 0
