@@ -192,8 +192,29 @@ public class Player_PickUP : MonoBehaviour
 
         bool isActive = puzzleUI.activeSelf;
         puzzleUI.SetActive(!isActive);
-        Time.timeScale = isActive ? 1 : 0; // 暂停或恢复游戏
+
+        if (isActive)
+        {
+            // 关闭 UI，恢复游戏 & 锁定鼠标 & 重新启用角色控制
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            // 重新启用玩家移动和视角
+            GetComponent<PlayerController>().enabled = true;
+        }
+        else
+        {
+            // 打开 UI，暂停游戏 & 释放鼠标 & 停止角色控制
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            // 禁用玩家移动和视角控制
+            GetComponent<PlayerController>().enabled = false;
+        }
 
         Debug.Log("Puzzle UI 状态：" + puzzleUI.activeSelf);
     }
+
 }
