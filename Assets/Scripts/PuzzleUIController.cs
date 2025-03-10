@@ -14,10 +14,7 @@ public class PuzzleUIController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TogglePuzzleUI();
-        }
+  
     }
 
     public void TogglePuzzleUI()
