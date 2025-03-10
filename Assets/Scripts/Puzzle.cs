@@ -1,21 +1,20 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class PuzzlePiece : MonoBehaviour, IPointerClickHandler
 {
     public float rotationAngle = 90f;  // 每次点击旋转角度
-    public float rotationSpeed = 5f; // 旋转速度
+    public float rotationSpeed = 200f; // 旋转速度（单位：度/秒）
 
     private RectTransform rectTransform;
-    private float currentRotation; // 当前角度
     private float targetRotation; // 目标角度
     private bool isRotating = false;
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        currentRotation = rectTransform.localEulerAngles.z;
-        targetRotation = currentRotation;
+        targetRotation = rectTransform.localEulerAngles.z;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -23,27 +22,26 @@ public class PuzzlePiece : MonoBehaviour, IPointerClickHandler
         Debug.Log("UI 小块被点击！"); // 确保点击时有输出
         if (!isRotating)
         {
-            targetRotation += rotationAngle;
+            targetRotation = Mathf.Round((targetRotation + rotationAngle) % 360); // 确保角度不会超出 360
             StartCoroutine(RotateSmoothly());
         }
     }
 
-    private System.Collections.IEnumerator RotateSmoothly()
+    private IEnumerator RotateSmoothly()
     {
         isRotating = true;
-        float time = 0f;
         float startRotation = rectTransform.localEulerAngles.z;
+        float elapsedTime = 0f;
 
-        while (time < 1f)
+        while (elapsedTime < 0.3f) // 让旋转持续 0.3 秒
         {
-            time += Time.unscaledDeltaTime * rotationSpeed; // 使用 unscaledDeltaTime，避免受 Time.timeScale 影响
-            float newRotation = Mathf.Lerp(startRotation, targetRotation, time);
+            elapsedTime += Time.unscaledDeltaTime; // 使用 unscaledDeltaTime 避免 Time.timeScale 影响
+            float newRotation = Mathf.LerpAngle(startRotation, targetRotation, elapsedTime / 0.3f);
             rectTransform.localEulerAngles = new Vector3(0, 0, newRotation);
             yield return null;
         }
 
         rectTransform.localEulerAngles = new Vector3(0, 0, targetRotation);
-        currentRotation = targetRotation;
         isRotating = false;
     }
 }
