@@ -73,6 +73,7 @@ public class Player_PickUP : MonoBehaviour
                 Destroy(wrench);
                 haswrench += 1;
                 image.gameObject.SetActive(true);
+                interactIcon.SetActive(false);
             }
 
             if (wrench != null && wrench.CompareTag("flashlight") && !isHoldingFlashlight)
