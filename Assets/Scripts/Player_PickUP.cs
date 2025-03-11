@@ -43,8 +43,14 @@ public class Player_PickUP : MonoBehaviour
     {
         canPick();
         canTalk();
-        canSolveCircuitPuzzle();
+
+      
+        if (canSolvePuzzle && Input.GetKeyDown(KeyCode.E))
+        {
+            TogglePuzzle();
+        }
     }
+
 
     public void canTalk()
     {
@@ -67,6 +73,7 @@ public class Player_PickUP : MonoBehaviour
                 Destroy(wrench);
                 haswrench += 1;
                 image.gameObject.SetActive(true);
+                interactIcon.SetActive(false);
             }
 
             if (wrench != null && wrench.CompareTag("flashlight") && !isHoldingFlashlight)
@@ -145,12 +152,14 @@ public class Player_PickUP : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        // 🛠 **通用退出逻辑**
         if (other.CompareTag("items1") || other.CompareTag("flashlight"))
         {
-            wrench = null;
             canPickUp = false;
+            wrench = null;  // 取消当前物品的引用
+            Debug.Log("离开物品交互范围");
 
-            // **离开拾取范围时，隐藏交互图标**
+            // **隐藏交互 UI**
             if (interactIcon != null)
             {
                 interactIcon.SetActive(false);
@@ -159,10 +168,11 @@ public class Player_PickUP : MonoBehaviour
 
         if (other.CompareTag("npc1"))
         {
-            npc1 = null;
             canTalkwith = false;
+            npc1 = null;  // 取消 NPC 的引用
+            Debug.Log("离开 NPC 交互范围");
 
-            // **离开 NPC 交互范围时，隐藏交互图标**
+            // **隐藏交互 UI**
             if (interactIcon != null)
             {
                 interactIcon.SetActive(false);
@@ -172,7 +182,8 @@ public class Player_PickUP : MonoBehaviour
         if (other.CompareTag("powerswitch"))
         {
             canSolvePuzzle = false;
-            currentSwitch = null;
+            currentSwitch = null; // 取消开关的引用
+            Debug.Log("离开谜题交互范围");
 
             // **隐藏交互 UI**
             if (interactIcon != null)
@@ -182,14 +193,11 @@ public class Player_PickUP : MonoBehaviour
         }
     }
 
+
+
     void TogglePuzzle()
     {
-        if (puzzleUI == null)
-        {
-            Debug.LogError("Puzzle UI 没有绑定，请检查 Player_PickUP 组件！");
-            return;
-        }
-
+     
         bool isActive = puzzleUI.activeSelf;
         puzzleUI.SetActive(!isActive);
 
