@@ -37,11 +37,11 @@ public class PuzzlePiece : MonoBehaviour, IPointerClickHandler
         {
             elapsedTime += Time.unscaledDeltaTime; //  π”√ unscaledDeltaTime ±‹√‚ Time.timeScale ”∞œÏ
             float newRotation = Mathf.LerpAngle(startRotation, targetRotation, elapsedTime / 0.3f);
-            rectTransform.localEulerAngles = new Vector3(0, 0, newRotation);
+            rectTransform.rotation = Quaternion.Euler(0, 0, newRotation);
             yield return null;
         }
 
-        rectTransform.localEulerAngles = new Vector3(0, 0, targetRotation);
+        rectTransform.rotation = Quaternion.Euler(0, 0, targetRotation);
         isRotating = false;
     }
 }
