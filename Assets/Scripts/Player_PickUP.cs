@@ -44,7 +44,7 @@ public class Player_PickUP : MonoBehaviour
         canPick();
         canTalk();
 
-      
+
         if (canSolvePuzzle && Input.GetKeyDown(KeyCode.E))
         {
             TogglePuzzle();
@@ -87,21 +87,41 @@ public class Player_PickUP : MonoBehaviour
     {
         if (flashlight != null)
         {
-            flashlight.transform.SetParent(flashlightSlot);
-            flashlight.transform.localPosition = Vector3.zero;
-            flashlight.transform.localRotation = Quaternion.identity;
+            // 取消父级，防止抖动
+            flashlight.transform.SetParent(null);
 
+            // 让手电筒跟随手部位置
+            flashlight.transform.position = flashlightSlot.position;
+            flashlight.transform.rotation = flashlightSlot.rotation;
+
+            // 关闭物理影响
             Rigidbody rb = flashlight.GetComponent<Rigidbody>();
             if (rb != null)
             {
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
-                rb.isKinematic = true;
+                rb.isKinematic = true; // 使其静止
             }
 
             isHoldingFlashlight = true;
+
+            // **禁用手电筒的碰撞器，防止触发拾取逻辑**
+            Collider flashlightCollider = flashlight.GetComponent<Collider>();
+            if (flashlightCollider != null)
+            {
+                flashlightCollider.enabled = false;
+            }
+
+            // **隐藏交互 UI**
+            if (interactIcon != null)
+            {
+                interactIcon.SetActive(false);
+            }
+
+            Debug.Log("手电筒已拾取");
         }
     }
+
 
     void canSolveCircuitPuzzle()
     {
@@ -157,10 +177,9 @@ public class Player_PickUP : MonoBehaviour
         {
             canPickUp = false;
             wrench = null;  // 取消当前物品的引用
-            Debug.Log("离开物品交互范围");
 
             // **隐藏交互 UI**
-            if (interactIcon != null)
+            if (!isHoldingFlashlight && interactIcon != null)
             {
                 interactIcon.SetActive(false);
             }
@@ -170,7 +189,6 @@ public class Player_PickUP : MonoBehaviour
         {
             canTalkwith = false;
             npc1 = null;  // 取消 NPC 的引用
-            Debug.Log("离开 NPC 交互范围");
 
             // **隐藏交互 UI**
             if (interactIcon != null)
@@ -183,7 +201,7 @@ public class Player_PickUP : MonoBehaviour
         {
             canSolvePuzzle = false;
             currentSwitch = null; // 取消开关的引用
-            Debug.Log("离开谜题交互范围");
+
 
             // **隐藏交互 UI**
             if (interactIcon != null)
@@ -197,7 +215,7 @@ public class Player_PickUP : MonoBehaviour
 
     void TogglePuzzle()
     {
-     
+
         bool isActive = puzzleUI.activeSelf;
         puzzleUI.SetActive(!isActive);
 
