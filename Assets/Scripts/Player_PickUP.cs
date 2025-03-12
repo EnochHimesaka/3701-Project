@@ -44,7 +44,7 @@ public class Player_PickUP : MonoBehaviour
         canPick();
         canTalk();
 
-      
+
         if (canSolvePuzzle && Input.GetKeyDown(KeyCode.E))
         {
             TogglePuzzle();
@@ -197,7 +197,7 @@ public class Player_PickUP : MonoBehaviour
 
     void TogglePuzzle()
     {
-     
+
         bool isActive = puzzleUI.activeSelf;
         puzzleUI.SetActive(!isActive);
 
