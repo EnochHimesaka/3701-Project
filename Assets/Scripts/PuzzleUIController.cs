@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems; // 引入事件系统
 
 public class PuzzleUIController : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class PuzzleUIController : MonoBehaviour
     public PlayerController playerController; // 玩家脚本
 
     private bool isPuzzleActive = false; // 是否激活解谜界面
+    private int clickCount = 0; // 鼠标点击计数
+    private int requiredClicks = 10; // 需要的点击次数
 
     void Start()
     {
@@ -14,7 +17,24 @@ public class PuzzleUIController : MonoBehaviour
 
     void Update()
     {
-  
+        if (isPuzzleActive && Input.GetMouseButtonDown(0))
+        {
+            // 确保点击不会被 UI 拦截
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                clickCount++;
+                Debug.Log("点击次数: " + clickCount);
+
+                if (clickCount >= requiredClicks)
+                {
+                    WinPuzzle();
+                }
+            }
+            else
+            {
+                Debug.Log("点击无效，被 UI 挡住了！");
+            }
+        }
     }
 
     public void TogglePuzzleUI()
@@ -41,6 +61,23 @@ public class PuzzleUIController : MonoBehaviour
             {
                 playerController.enabled = true;
             }
+        }
+    }
+
+    public void WinPuzzle()
+    {
+        Debug.Log("解谜成功！");
+        isPuzzleActive = false;
+        puzzleUI.SetActive(false); // 关闭 UI
+
+        // 还原鼠标控制
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        // 还原玩家控制
+        if (playerController != null)
+        {
+            playerController.enabled = true;
         }
     }
 }
