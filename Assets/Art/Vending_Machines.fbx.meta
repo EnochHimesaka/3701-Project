@@ -3,7 +3,32 @@ guid: 48158df540de7b0408ba7fba54ce0c17
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal_Corrogated_Shiny
+    second: {fileID: 2100000, guid: c5e0e78a8b5d5fa48ac02971417ba67a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal_Corrogated_Shiny_1
+    second: {fileID: 2100000, guid: 64729b73ebffe8d4782ba5c1a9400e96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Translucent_Glass_Block_Dark
+    second: {fileID: 2100000, guid: 5647d54510130864c8e7c71e9a826eaf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Translucent_Glass_Gray_1
+    second: {fileID: -6959899983267539639, guid: aa693ba6d5d89184bbaf046d301a144f, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: material_59
+    second: {fileID: 2100000, guid: c384a1ccc6b797f48b5230f3c7e8458d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
