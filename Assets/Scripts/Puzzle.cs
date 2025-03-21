@@ -1,28 +1,32 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
 
 public class PuzzlePiece : MonoBehaviour, IPointerClickHandler
 {
-    public float rotationAngle = 90f;  // Ã¿´Îµã»÷Ğı×ª½Ç¶È
-    public float rotationSpeed = 200f; // Ğı×ªËÙ¶È£¨µ¥Î»£º¶È/Ãë£©
+    public float rotationAngle = 90f;  // æ¯æ¬¡ç‚¹å‡»æ—‹è½¬è§’åº¦
+    public float rotationSpeed = 200f; // æ—‹è½¬é€Ÿåº¦ï¼ˆå•ä½ï¼šåº¦/ç§’ï¼‰
+    public float correctRotation = 0f; // ç›®æ ‡æ­£ç¡®è§’åº¦
 
     private RectTransform rectTransform;
-    private float targetRotation; // Ä¿±ê½Ç¶È
+    private float targetRotation;
     private bool isRotating = false;
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         targetRotation = rectTransform.localEulerAngles.z;
+
+        
+        ShuffleRotation();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("UI Ğ¡¿é±»µã»÷£¡"); // È·±£µã»÷Ê±ÓĞÊä³ö
+        Debug.Log("UI å°å—è¢«ç‚¹å‡»ï¼");
         if (!isRotating)
         {
-            targetRotation = Mathf.Round((targetRotation + rotationAngle) % 360); // È·±£½Ç¶È²»»á³¬³ö 360
+            targetRotation = Mathf.Round((targetRotation + rotationAngle) % 360);
             StartCoroutine(RotateSmoothly());
         }
     }
@@ -33,9 +37,9 @@ public class PuzzlePiece : MonoBehaviour, IPointerClickHandler
         float startRotation = rectTransform.localEulerAngles.z;
         float elapsedTime = 0f;
 
-        while (elapsedTime < 0.3f) // ÈÃĞı×ª³ÖĞø 0.3 Ãë
+        while (elapsedTime < 0.3f)
         {
-            elapsedTime += Time.unscaledDeltaTime; // Ê¹ÓÃ unscaledDeltaTime ±ÜÃâ Time.timeScale Ó°Ïì
+            elapsedTime += Time.unscaledDeltaTime;
             float newRotation = Mathf.LerpAngle(startRotation, targetRotation, elapsedTime / 0.3f);
             rectTransform.rotation = Quaternion.Euler(0, 0, newRotation);
             yield return null;
@@ -44,4 +48,20 @@ public class PuzzlePiece : MonoBehaviour, IPointerClickHandler
         rectTransform.rotation = Quaternion.Euler(0, 0, targetRotation);
         isRotating = false;
     }
+
+    
+    public bool IsCorrectlyRotated()
+    {
+        float currentRotation = rectTransform.localEulerAngles.z;
+        return Mathf.Abs(currentRotation - correctRotation) < 5f; // å…è®¸ 5Â° è¯¯å·®
+    }
+
+    private void ShuffleRotation()
+    {
+        int randomRotations = Random.Range(0, 4); // 0, 1, 2, 3 -> 0, 90, 180, 270 åº¦
+        targetRotation = (correctRotation + randomRotations * 90) % 360;
+        rectTransform.rotation = Quaternion.Euler(0, 0, targetRotation);
+    }
+
+
 }
