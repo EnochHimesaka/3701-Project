@@ -45,6 +45,12 @@ public class Player_PickUP : MonoBehaviour
         canTalk();
 
 
+        if (isHoldingFlashlight && flashlight != null)
+        {
+            flashlight.transform.position = flashlightSlot.position;
+            flashlight.transform.rotation = flashlightSlot.rotation;
+        }
+
         if (canSolvePuzzle && Input.GetKeyDown(KeyCode.E))
         {
             TogglePuzzle();
@@ -87,41 +93,39 @@ public class Player_PickUP : MonoBehaviour
     {
         if (flashlight != null)
         {
-            // 取消父级，防止抖动
-            flashlight.transform.SetParent(null);
+            // ✅ 让手电筒成为 `flashlightSlot` 的子物体
+            flashlight.transform.SetParent(flashlightSlot);
 
-            // 让手电筒跟随手部位置
-            flashlight.transform.position = flashlightSlot.position;
-            flashlight.transform.rotation = flashlightSlot.rotation;
+            // ✅ 立即对齐位置和旋转
+            flashlight.transform.localPosition = Vector3.zero;
+            flashlight.transform.localRotation = Quaternion.identity;
 
-            // 关闭物理影响
+            // ✅ 确保 Rigidbody 不影响手电筒
             Rigidbody rb = flashlight.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.linearVelocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
-                rb.isKinematic = true; // 使其静止
+                rb.isKinematic = true;
+                rb.useGravity = false;
             }
 
-            isHoldingFlashlight = true;
-
-            // **禁用手电筒的碰撞器，防止触发拾取逻辑**
+            // ✅ 禁用碰撞，防止再次触发拾取逻辑
             Collider flashlightCollider = flashlight.GetComponent<Collider>();
             if (flashlightCollider != null)
             {
                 flashlightCollider.enabled = false;
             }
 
-            // **隐藏交互 UI**
+            isHoldingFlashlight = true;
+
+            // ✅ 隐藏交互 UI
             if (interactIcon != null)
             {
                 interactIcon.SetActive(false);
             }
 
-            Debug.Log("手电筒已拾取");
+            Debug.Log("手电筒已拾取，并正确附着在角色身上！");
         }
     }
-
 
     void canSolveCircuitPuzzle()
     {
