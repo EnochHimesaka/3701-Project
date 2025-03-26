@@ -17,9 +17,9 @@ public class Jumplevel : Interactable
 
     private void LoadNextScene()
     {
-        if (!string.IsNullOrEmpty("School"))
+        if (!string.IsNullOrEmpty("Lab"))
         {
-            SceneManager.LoadScene("School");
+            SceneManager.LoadScene("Lab");
         }
       
     }

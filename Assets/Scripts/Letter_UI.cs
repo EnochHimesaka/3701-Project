@@ -42,7 +42,7 @@ public class Letter_UI : Interactable
 
     private IEnumerator StartBlackout()
     {
-        yield return new WaitForSeconds(10f); // **等待10秒**
+        yield return new WaitForSeconds(30f); // **等待10秒**
 
         // **关闭所有灯光**
         foreach (Light light in sceneLights)
