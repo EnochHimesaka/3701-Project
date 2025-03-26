@@ -23,7 +23,7 @@ public class PuzzlePiece : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("UI 小块被点击！");
+     
         if (!isRotating)
         {
             targetRotation = Mathf.Round((targetRotation + rotationAngle) % 360);
@@ -47,6 +47,7 @@ public class PuzzlePiece : MonoBehaviour, IPointerClickHandler
 
         rectTransform.rotation = Quaternion.Euler(0, 0, targetRotation);
         isRotating = false;
+        FindObjectOfType<PuzzleUIController>().CheckPuzzleCompletion();
     }
 
     

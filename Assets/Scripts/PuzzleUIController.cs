@@ -1,39 +1,32 @@
-using UnityEngine;
-using UnityEngine.EventSystems; // ÒıÈëÊÂ¼şÏµÍ³
+ï»¿using UnityEngine;
 
 public class PuzzleUIController : MonoBehaviour
 {
-    public GameObject puzzleUI; // UI ½çÃæ
-    public PlayerController playerController; // Íæ¼Ò½Å±¾
+    public GameObject puzzleUI;                      // æ‹¼å›¾UIç•Œé¢
+    public PlayerController playerController;        // ç©å®¶æ§åˆ¶å™¨
+    public UnityEngine.InputSystem.PlayerInput playerInput; // PlayerInputï¼ˆæ–°è¾“å…¥ç³»ç»Ÿï¼‰
 
-    private bool isPuzzleActive = false; // ÊÇ·ñ¼¤»î½âÃÕ½çÃæ
-    private int clickCount = 0; // Êó±êµã»÷¼ÆÊı
-    private int requiredClicks = 10; // ĞèÒªµÄµã»÷´ÎÊı
+    public PuzzlePiece[] puzzlePieces;               // æ‰€æœ‰æ‹¼å›¾å—
+    public GameObject[] powerSwitches;               // å¤šä¸ªç”µæºå¼€å…³
+    public GameObject completionText;               
+    public Light[] sceneLights;
+
+    public GameObject completeImage;
+    private bool isPuzzleActive = false;
+    private bool puzzleCompleted = false;
 
     void Start()
     {
-        puzzleUI.SetActive(false); // ³õÊ¼Ê± UI ¹Ø±Õ
+        puzzleUI.SetActive(false);
+        if (completionText != null)
+            completionText.SetActive(false);
     }
 
     void Update()
     {
-        if (isPuzzleActive && Input.GetMouseButtonDown(0))
+        if (isPuzzleActive && puzzleCompleted && Input.GetKeyDown(KeyCode.E))
         {
-            // È·±£µã»÷²»»á±» UI À¹½Ø
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                clickCount++;
-                Debug.Log("µã»÷´ÎÊı: " + clickCount);
-
-                if (clickCount >= requiredClicks)
-                {
-                    WinPuzzle();
-                }
-            }
-            else
-            {
-                Debug.Log("µã»÷ÎŞĞ§£¬±» UI µ²×¡ÁË£¡");
-            }
+            ExitPuzzleUI();
         }
     }
 
@@ -44,40 +37,70 @@ public class PuzzleUIController : MonoBehaviour
 
         if (isPuzzleActive)
         {
-            // ´ò¿ª UI£¬½âËøÊó±ê£¬½ûÓÃÍæ¼ÒÒÆ¶¯
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            if (playerController != null)
-            {
-                playerController.enabled = false;
-            }
+            if (playerController != null) playerController.enabled = false;
+            if (playerInput != null) playerInput.enabled = false;
         }
         else
         {
-            // ¹Ø±Õ UI£¬Ëø¶¨Êó±ê£¬»Ö¸´Íæ¼Ò¿ØÖÆ
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            if (playerController != null)
-            {
-                playerController.enabled = true;
-            }
+            ExitPuzzleUI(); // é˜²æ­¢å¤–éƒ¨é”™è¯¯è°ƒç”¨ç›´æ¥é€€å‡º
         }
     }
 
-    public void WinPuzzle()
+    public void CheckPuzzleCompletion()
     {
-        Debug.Log("½âÃÕ³É¹¦£¡");
-        isPuzzleActive = false;
-        puzzleUI.SetActive(false); // ¹Ø±Õ UI
+        foreach (PuzzlePiece piece in puzzlePieces)
+        {
+            if (!piece.IsCorrectlyRotated())
+                return;
+        }
 
-        // »¹Ô­Êó±ê¿ØÖÆ
+     
+        puzzleCompleted = true;
+
+        // æ˜¾ç¤ºå®Œæˆæç¤º
+        if (completionText != null)
+            completionText.SetActive(true);
+
+        // å¼€ç¯
+        if (sceneLights != null && sceneLights.Length > 0)
+        {
+            foreach (Light light in sceneLights)
+            {
+                if (light != null)
+                    light.enabled = true;
+            }
+        }
+
+        if (completeImage != null)
+            completeImage.SetActive(true);
+
+        // è§£é”æ‰€æœ‰ç”µæºå¼€å…³
+        foreach (GameObject obj in powerSwitches)
+        {
+            if (obj != null)
+                obj.SetActive(true);
+        }
+
+        // ç¦æ­¢ç»§ç»­è½¬æ‹¼å›¾å—
+        foreach (PuzzlePiece piece in puzzlePieces)
+        {
+            piece.enabled = false;
+        }
+    }
+
+    private void ExitPuzzleUI()
+    {
+        isPuzzleActive = false;
+        puzzleUI.SetActive(false);
+        if (completionText != null)
+            completionText.SetActive(false);
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // »¹Ô­Íæ¼Ò¿ØÖÆ
-        if (playerController != null)
-        {
-            playerController.enabled = true;
-        }
+        if (playerController != null) playerController.enabled = true;
+        if (playerInput != null) playerInput.enabled = true;
     }
 }

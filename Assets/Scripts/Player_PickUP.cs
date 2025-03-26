@@ -123,7 +123,7 @@ public class Player_PickUP : MonoBehaviour
                 interactIcon.SetActive(false);
             }
 
-            Debug.Log("手电筒已拾取，并正确附着在角色身上！");
+           
         }
     }
 
