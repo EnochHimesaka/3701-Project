@@ -10,6 +10,8 @@ TagManager:
   - npc1
   - CinemachineTarget
   - powerswitch
+  - redcube
+  - bluecube
   layers:
   - Default
   - TransparentFX
