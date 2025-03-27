@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Player_PickUP : MonoBehaviour
 {
     public GameObject wrench;
+    public GameObject Sd;
     public GameObject OpenSwitch;
     public Text itemsText;
     public Image image;
@@ -13,6 +14,7 @@ public class Player_PickUP : MonoBehaviour
     private bool isHoldingFlashlight = false;
     public bool canPickUp;
     public int haswrench;
+    
 
     //------------ dialogue system variables
     public bool canTalkwith;
@@ -89,18 +91,20 @@ public class Player_PickUP : MonoBehaviour
         }
     }
 
+
+
     void TryPickupFlashlight()
     {
         if (flashlight != null)
         {
-            // ✅ 让手电筒成为 `flashlightSlot` 的子物体
+
             flashlight.transform.SetParent(flashlightSlot);
 
-            // ✅ 立即对齐位置和旋转
+
             flashlight.transform.localPosition = Vector3.zero;
             flashlight.transform.localRotation = Quaternion.identity;
 
-            // ✅ 确保 Rigidbody 不影响手电筒
+
             Rigidbody rb = flashlight.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -108,7 +112,7 @@ public class Player_PickUP : MonoBehaviour
                 rb.useGravity = false;
             }
 
-            // ✅ 禁用碰撞，防止再次触发拾取逻辑
+
             Collider flashlightCollider = flashlight.GetComponent<Collider>();
             if (flashlightCollider != null)
             {
@@ -117,13 +121,13 @@ public class Player_PickUP : MonoBehaviour
 
             isHoldingFlashlight = true;
 
-            // ✅ 隐藏交互 UI
+
             if (interactIcon != null)
             {
                 interactIcon.SetActive(false);
             }
 
-            Debug.Log("手电筒已拾取，并正确附着在角色身上！");
+           
         }
     }
 
@@ -162,6 +166,18 @@ public class Player_PickUP : MonoBehaviour
         }
 
         if (other.CompareTag("powerswitch"))
+        {
+            canSolvePuzzle = true;
+            currentSwitch = other.gameObject;
+
+            // **显示交互 UI**
+            if (interactIcon != null)
+            {
+                interactIcon.SetActive(true);
+            }
+        }
+
+        if (other.CompareTag("Sd"))
         {
             canSolvePuzzle = true;
             currentSwitch = other.gameObject;
