@@ -30,6 +30,9 @@ public class Player_PickUP : MonoBehaviour
     private bool canSolvePuzzle = false;
     private GameObject currentSwitch;
 
+    //-----------------------audio
+    public AudioSource pickSFX;
+    public AudioSource talkSFX;
     void Start()
     {
         image.gameObject.SetActive(false);
@@ -52,16 +55,18 @@ public class Player_PickUP : MonoBehaviour
 
         if (canSolvePuzzle && Input.GetKeyDown(KeyCode.E))
         {
+            pickSFX.Play();
             TogglePuzzle();
         }
     }
 
     public void canTalk()
     {
-        if (canTalkwith && Input.GetKeyDown(KeyCode.E))
+        if (canTalkwith && Input.GetKeyDown(KeyCode.F))
         {
             dialoguePanel.SetActive(true);
             print("DIALOGUE ");
+            talkSFX.Play();
         }
     }
 
@@ -69,6 +74,7 @@ public class Player_PickUP : MonoBehaviour
     {
         if (canPickUp && Input.GetKeyDown(KeyCode.E))
         {
+            pickSFX.Play();
             canPickUp = false;
             print("PICK UP");
 

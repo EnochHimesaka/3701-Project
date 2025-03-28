@@ -12,6 +12,9 @@ TagManager:
   - powerswitch
   - redcube
   - bluecube
+  - Sd
+  - WayPoints
+  - StopZone
   layers:
   - Default
   - TransparentFX
