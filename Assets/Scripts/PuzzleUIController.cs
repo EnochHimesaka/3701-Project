@@ -14,7 +14,8 @@ public class PuzzleUIController : MonoBehaviour
     public GameObject completeImage;
     private bool isPuzzleActive = false;
     private bool puzzleCompleted = false;
-
+    public AudioSource completionVoice;
+    private bool voicePlayed = false;
     void Start()
     {
         puzzleUI.SetActive(false);
@@ -58,6 +59,11 @@ public class PuzzleUIController : MonoBehaviour
 
      
         puzzleCompleted = true;
+        if (!voicePlayed && completionVoice != null)
+        {
+            completionVoice.Play();
+            voicePlayed = true;
+        }
 
         // 显示完成提示
         if (completionText != null)
