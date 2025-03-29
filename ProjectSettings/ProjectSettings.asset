@@ -42,7 +42,7 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 21300000, guid: f793d7aef6e3c794bb1fbe7033183e3e, type: 3}
     duration: 2
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 940cf4b7d2f3be3478488de6455bc968, type: 3}
+  m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
@@ -818,7 +818,8 @@ PlayerSettings:
   webGLWebAssemblyBigInt: 0
   webGLCloseOnQuit: 0
   webWasm2023: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Windows Store Apps: 
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
