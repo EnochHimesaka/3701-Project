@@ -35,7 +35,9 @@ public class Player_PickUP : MonoBehaviour
     public AudioSource talkSFX;
     void Start()
     {
-        image.gameObject.SetActive(false);
+        if (image != null) {
+            image.gameObject.SetActive(false);
+        }
         if (interactIcon != null)
         {
             interactIcon.SetActive(false);

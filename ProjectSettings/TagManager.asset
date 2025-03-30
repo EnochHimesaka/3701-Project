@@ -15,6 +15,7 @@ TagManager:
   - Sd
   - WayPoints
   - StopZone
+  - BottomFloor
   layers:
   - Default
   - TransparentFX
