@@ -5809,6 +5809,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4120006549087269644, guid: 74b1d93aeb749c845bb0f4aed171c8ea, type: 3}
   m_PrefabInstance: {fileID: 1834909567}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &437583506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 437583507}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &437583507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437583506}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.966, y: 0.723, z: 23.658}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1192536112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &444526811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20207,6 +20238,7 @@ Transform:
   m_Children:
   - {fileID: 1513349454}
   - {fileID: 1722286443}
+  - {fileID: 437583507}
   - {fileID: 1225956172}
   m_Father: {fileID: 1919966235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20326,7 +20358,7 @@ Transform:
   m_GameObject: {fileID: 1225956171}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.453, y: 0.723, z: 24.351}
+  m_LocalPosition: {x: -1.317, y: 0.723, z: 23.587}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26237,7 +26269,7 @@ Transform:
   m_GameObject: {fileID: 1722286442}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.58, y: 0.723, z: 20.21}
+  m_LocalPosition: {x: 2.91, y: 0.723, z: 18.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33718,7 +33750,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: a2489a514b2ed1a40bf3e8d094cf35c1, type: 2}
+      objectReference: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
     - target: {fileID: 7036213049465896255, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -33761,7 +33793,7 @@ PrefabInstance:
       addedObject: {fileID: 1919966240}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1919966241}
+      addedObject: {fileID: 1919966242}
   m_SourcePrefab: {fileID: 100100000, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
 --- !u!4 &1886912176 stripped
 Transform:
@@ -34176,15 +34208,15 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.5
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.88, z: 0}
---- !u!114 &1919966241
+--- !u!114 &1919966242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34193,10 +34225,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1164037900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29daf12e9b2c7994a8589d2c4b0e70a7, type: 3}
+  m_Script: {fileID: 11500000, guid: d15263c3cf93b6e4ba3b56be9ebc3b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePositionTransform: {fileID: 1513349454}
+  agent: {fileID: 1919966237}
+  player: {fileID: 1693062570}
+  patrolPoints:
+  - {fileID: 1513349454}
+  - {fileID: 1722286443}
+  - {fileID: 437583507}
+  - {fileID: 1225956172}
+  sightRange: 0
+  attackRange: 0
+  interactRange: 3
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  animator: {fileID: 0}
+  patrolSpeed: 4
+  chaseSpeed: 2
+  interactPromptUI: {fileID: 766303215}
 --- !u!1001 &1921167323
 PrefabInstance:
   m_ObjectHideFlags: 0
