@@ -22193,8 +22193,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fd69d44a6b347544cb64fe011a6599ae, type: 3}
-  m_Resource: {fileID: 8300000, guid: fd69d44a6b347544cb64fe011a6599ae, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.19
   m_Pitch: 1
@@ -22202,7 +22202,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 27
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -33743,6 +33743,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: npc1
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
+      propertyPath: 'm_Materials.Array.data[10]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c31e93f041d038b4fb74f0b76438784b, type: 2}
     - target: {fileID: 4599315672028784731, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
