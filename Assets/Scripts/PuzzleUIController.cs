@@ -1,21 +1,29 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem; // 新输入系统
 
 public class PuzzleUIController : MonoBehaviour
 {
-    public GameObject puzzleUI;                      // 拼图UI界面
-    public PlayerController playerController;        // 玩家控制器
-    public UnityEngine.InputSystem.PlayerInput playerInput; // PlayerInput（新输入系统）
+    public static bool puzzleCleared = false; // ✅ 用于关卡判断
 
-    public PuzzlePiece[] puzzlePieces;               // 所有拼图块
-    public GameObject[] powerSwitches;               // 多个电源开关
-    public GameObject completionText;               
-    public Light[] sceneLights;
-
+    [Header("拼图系统")]
+    public GameObject puzzleUI;
+    public PuzzlePiece[] puzzlePieces;
     public GameObject completeImage;
+    public GameObject completionText;
+
+    [Header("控制系统")]
+    public PlayerController playerController;
+    public PlayerInput playerInput;
+
+    [Header("场景反馈")]
+    public Light[] sceneLights;
+    public GameObject[] powerSwitches;
+    public AudioSource completionVoice;
+
     private bool isPuzzleActive = false;
     private bool puzzleCompleted = false;
-    public AudioSource completionVoice;
     private bool voicePlayed = false;
+
     void Start()
     {
         puzzleUI.SetActive(false);
@@ -25,7 +33,7 @@ public class PuzzleUIController : MonoBehaviour
 
     void Update()
     {
-        if (isPuzzleActive && puzzleCompleted && Input.GetKeyDown(KeyCode.E))
+        if (isPuzzleActive && puzzleCompleted && Keyboard.current.eKey.wasPressedThisFrame)
         {
             ExitPuzzleUI();
         }
@@ -45,7 +53,7 @@ public class PuzzleUIController : MonoBehaviour
         }
         else
         {
-            ExitPuzzleUI(); // 防止外部错误调用直接退出
+            ExitPuzzleUI();
         }
     }
 
@@ -53,43 +61,31 @@ public class PuzzleUIController : MonoBehaviour
     {
         foreach (PuzzlePiece piece in puzzlePieces)
         {
-            if (!piece.IsCorrectlyRotated())
-                return;
+            if (!piece.IsCorrectlyRotated()) return;
         }
 
-     
         puzzleCompleted = true;
+        puzzleCleared = true;
+
         if (!voicePlayed && completionVoice != null)
         {
             completionVoice.Play();
             voicePlayed = true;
         }
 
-        // 显示完成提示
-        if (completionText != null)
-            completionText.SetActive(true);
+        if (completionText != null) completionText.SetActive(true);
+        if (completeImage != null) completeImage.SetActive(true);
 
-        // 开灯
-        if (sceneLights != null && sceneLights.Length > 0)
+        foreach (Light light in sceneLights)
         {
-            foreach (Light light in sceneLights)
-            {
-                if (light != null)
-                    light.enabled = true;
-            }
+            if (light != null) light.enabled = true;
         }
 
-        if (completeImage != null)
-            completeImage.SetActive(true);
-
-        // 解锁所有电源开关
         foreach (GameObject obj in powerSwitches)
         {
-            if (obj != null)
-                obj.SetActive(true);
+            if (obj != null) obj.SetActive(true);
         }
 
-        // 禁止继续转拼图块
         foreach (PuzzlePiece piece in puzzlePieces)
         {
             piece.enabled = false;
@@ -100,8 +96,7 @@ public class PuzzleUIController : MonoBehaviour
     {
         isPuzzleActive = false;
         puzzleUI.SetActive(false);
-        if (completionText != null)
-            completionText.SetActive(false);
+        if (completionText != null) completionText.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

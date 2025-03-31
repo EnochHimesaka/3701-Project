@@ -9163,7 +9163,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 0}
   interactPrompt: {fileID: 766303215}
-  nextSceneName: School
+  nextSceneName: Lab
+  blackScreen: {fileID: 0}
+  fadeDuration: 1.5
 --- !u!1001 &733621435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10978,13 +10980,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875102246}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.005202855, y: 0.980546, z: 0.194459, w: -0.026235025}
+  m_LocalRotation: {x: 0.018167716, y: 0.7336262, z: 0.6790267, w: -0.019628558}
   m_LocalPosition: {x: 0.131073, y: 0.37800026, z: 0.109737396}
-  m_LocalScale: {x: 0.033506382, y: 0.03350639, z: 0.033506386}
+  m_LocalScale: {x: 0.14818868, y: 0.03350639, z: 0.31308702}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 630193101}
-  m_LocalEulerAnglesHint: {x: -22.434, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -85.573, y: -176.935, z: 0}
 --- !u!199 &875102248
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -18683,8 +18685,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleUI: {fileID: 868757795}
-  playerController: {fileID: 1693062569}
-  playerInput: {fileID: 0}
   puzzlePieces:
   - {fileID: 19832154}
   - {fileID: 594585212}
@@ -18702,14 +18702,16 @@ MonoBehaviour:
   - {fileID: 178049634}
   - {fileID: 1873828101}
   - {fileID: 430872054}
-  powerSwitches: []
+  completeImage: {fileID: 1181354148}
   completionText: {fileID: 1181354148}
+  playerController: {fileID: 1693062569}
+  playerInput: {fileID: 0}
   sceneLights:
   - {fileID: 1607710174}
   - {fileID: 32742061}
   - {fileID: 363753594}
   - {fileID: 867276317}
-  completeImage: {fileID: 1181354148}
+  powerSwitches: []
   completionVoice: {fileID: 1133267474}
 --- !u!82 &1133267474
 AudioSource:
@@ -24057,8 +24059,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleUI: {fileID: 25595807}
-  playerController: {fileID: 1693062569}
-  playerInput: {fileID: 0}
   puzzlePieces:
   - {fileID: 1221250379}
   - {fileID: 1496786096}
@@ -24072,14 +24072,16 @@ MonoBehaviour:
   - {fileID: 1814794973}
   - {fileID: 1368869428}
   - {fileID: 459435551}
-  powerSwitches: []
+  completeImage: {fileID: 0}
   completionText: {fileID: 835362000}
+  playerController: {fileID: 1693062569}
+  playerInput: {fileID: 0}
   sceneLights:
   - {fileID: 1607710174}
   - {fileID: 32742061}
   - {fileID: 363753594}
   - {fileID: 867276317}
-  completeImage: {fileID: 0}
+  powerSwitches: []
   completionVoice: {fileID: 0}
 --- !u!1001 &1646874168
 PrefabInstance:
@@ -24659,7 +24661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.2
+      value: -37.46
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24667,7 +24669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.93
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalRotation.w
@@ -33644,7 +33646,7 @@ PrefabInstance:
     - target: {fileID: 4599315672028784731, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: cc76667752d0c6c40bcf1f80cefe823f, type: 2}
+      objectReference: {fileID: 2100000, guid: a0bba0b7b73719c45a736dc7c3edb8be, type: 2}
     - target: {fileID: 5866666021909216657, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_Controller
       value: 

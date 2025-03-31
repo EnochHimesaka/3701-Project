@@ -1,32 +1,46 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Jumplevel : Interactable
 {
-    public string nextSceneName; // 在 Inspector 里设置要跳转的场景名称
-
+    public string nextSceneName = "Lab";
     private bool isPlayerNearby = false;
+
+    [Header("黑屏淡出")]
+    public CanvasGroup blackScreen;
+    public float fadeDuration = 1.5f;
 
     void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerNearby && PuzzleUIController.puzzleCleared && Input.GetKeyDown(KeyCode.E))
         {
-            LoadNextScene();
+            StartCoroutine(TransitionToNextScene());
         }
     }
 
-    private void LoadNextScene()
+    private IEnumerator TransitionToNextScene()
     {
-        if (!string.IsNullOrEmpty("Lab"))
+        if (blackScreen != null)
         {
-            SceneManager.LoadScene("Lab");
+            blackScreen.gameObject.SetActive(true);
+            float elapsed = 0f;
+
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                blackScreen.alpha = Mathf.Clamp01(elapsed / fadeDuration);
+                yield return null;
+            }
         }
-      
+
+        yield return new WaitForSeconds(0.3f);
+        SceneManager.LoadScene("Lab");
     }
 
     protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other); // 让准星变色
+        base.OnTriggerEnter(other);
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = true;
@@ -35,7 +49,7 @@ public class Jumplevel : Interactable
 
     protected override void OnTriggerExit(Collider other)
     {
-        base.OnTriggerExit(other); // 让准星恢复默认颜色
+        base.OnTriggerExit(other);
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = false;
