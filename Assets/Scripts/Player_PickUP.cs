@@ -8,6 +8,7 @@ public class Player_PickUP : MonoBehaviour
     public GameObject OpenSwitch;
     public Text itemsText;
     public Image image;
+    public Image image2;
     public Transform flashlightSlot;
     public GameObject flashlight;
 
@@ -98,6 +99,7 @@ public class Player_PickUP : MonoBehaviour
                 Destroy(wrench);
                 hasScrewdriver = true;
                 interactIcon.SetActive(false);
+                image2.gameObject.SetActive(true);
           
             }
         }
