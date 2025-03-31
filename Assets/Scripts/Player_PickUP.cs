@@ -4,15 +4,18 @@ using UnityEngine.UI;
 public class Player_PickUP : MonoBehaviour
 {
     public GameObject wrench;
+    public GameObject screwdriver;
     public GameObject OpenSwitch;
     public Text itemsText;
     public Image image;
+    public Image image2;
     public Transform flashlightSlot;
     public GameObject flashlight;
 
     private bool isHoldingFlashlight = false;
     public bool canPickUp;
     public int haswrench;
+    public bool hasScrewdriver;
 
     //------------ dialogue system variables
     public bool canTalkwith;
@@ -21,18 +24,21 @@ public class Player_PickUP : MonoBehaviour
     public DialogueManager dialogue;
 
     //------------ 交互图标 UI
-    public GameObject interactIcon; // 交互提示 UI（例如“按E交互”）
+    public GameObject interactIcon;
 
     //------------ 电路谜题 UI
     public GameObject puzzleUI;
-    private bool canSolvePuzzle = false; // 是否可以解谜
-    private GameObject currentSwitch; // 当前触发的 `powerswitch`
+    private bool canSolvePuzzle = false;
+    private GameObject currentSwitch;
 
+    //-----------------------audio
+    public AudioSource pickSFX;
+    public AudioSource talkSFX;
     void Start()
     {
-        image.gameObject.SetActive(false);
-
-        // **初始隐藏交互图标**
+        if (image != null) {
+            image.gameObject.SetActive(false);
+        }
         if (interactIcon != null)
         {
             interactIcon.SetActive(false);
@@ -44,20 +50,26 @@ public class Player_PickUP : MonoBehaviour
         canPick();
         canTalk();
 
-      
+        if (isHoldingFlashlight && flashlight != null)
+        {
+            flashlight.transform.position = flashlightSlot.position;
+            flashlight.transform.rotation = flashlightSlot.rotation;
+        }
+
         if (canSolvePuzzle && Input.GetKeyDown(KeyCode.E))
         {
+            pickSFX.Play();
             TogglePuzzle();
         }
     }
 
-
     public void canTalk()
     {
-        if (canTalkwith && Input.GetKeyDown(KeyCode.E))
+        if (canTalkwith && Input.GetKeyDown(KeyCode.F))
         {
             dialoguePanel.SetActive(true);
             print("DIALOGUE ");
+            talkSFX.Play();
         }
     }
 
@@ -65,6 +77,7 @@ public class Player_PickUP : MonoBehaviour
     {
         if (canPickUp && Input.GetKeyDown(KeyCode.E))
         {
+            pickSFX.Play();
             canPickUp = false;
             print("PICK UP");
 
@@ -80,6 +93,15 @@ public class Player_PickUP : MonoBehaviour
             {
                 TryPickupFlashlight();
             }
+
+            if (wrench != null && wrench.CompareTag("Sd"))
+            {
+                Destroy(wrench);
+                hasScrewdriver = true;
+                interactIcon.SetActive(false);
+                image2.gameObject.SetActive(true);
+          
+            }
         }
     }
 
@@ -94,31 +116,32 @@ public class Player_PickUP : MonoBehaviour
             Rigidbody rb = flashlight.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.linearVelocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
                 rb.isKinematic = true;
+                rb.useGravity = false;
+            }
+
+            Collider flashlightCollider = flashlight.GetComponent<Collider>();
+            if (flashlightCollider != null)
+            {
+                flashlightCollider.enabled = false;
             }
 
             isHoldingFlashlight = true;
-        }
-    }
 
-    void canSolveCircuitPuzzle()
-    {
-        if (canSolvePuzzle && Input.GetKeyDown(KeyCode.E))
-        {
-            TogglePuzzle();
+            if (interactIcon != null)
+            {
+                interactIcon.SetActive(false);
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("items1") || other.CompareTag("flashlight"))
+        if (other.CompareTag("items1") || other.CompareTag("flashlight") || other.CompareTag("Sd"))
         {
             wrench = other.gameObject;
             canPickUp = true;
 
-            // **进入拾取范围时，显示交互图标**
             if (interactIcon != null)
             {
                 interactIcon.SetActive(true);
@@ -130,7 +153,6 @@ public class Player_PickUP : MonoBehaviour
             npc1 = other.gameObject;
             canTalkwith = true;
 
-            // **进入 NPC 交互范围时，显示交互图标**
             if (interactIcon != null)
             {
                 interactIcon.SetActive(true);
@@ -139,28 +161,35 @@ public class Player_PickUP : MonoBehaviour
 
         if (other.CompareTag("powerswitch"))
         {
-            canSolvePuzzle = true;
             currentSwitch = other.gameObject;
 
-            // **显示交互 UI**
+           
             if (interactIcon != null)
             {
                 interactIcon.SetActive(true);
             }
+
+           
+            if (haswrench > 0 && hasScrewdriver)
+            {
+                canSolvePuzzle = true;
+            }
+            else
+            {
+                canSolvePuzzle = false;
+            }
         }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // 🛠 **通用退出逻辑**
-        if (other.CompareTag("items1") || other.CompareTag("flashlight"))
+        if (other.CompareTag("items1") || other.CompareTag("flashlight") || other.CompareTag("Sd"))
         {
             canPickUp = false;
-            wrench = null;  // 取消当前物品的引用
-            Debug.Log("离开物品交互范围");
+            wrench = null;
 
-            // **隐藏交互 UI**
-            if (interactIcon != null)
+            if (!isHoldingFlashlight && interactIcon != null)
             {
                 interactIcon.SetActive(false);
             }
@@ -169,10 +198,8 @@ public class Player_PickUP : MonoBehaviour
         if (other.CompareTag("npc1"))
         {
             canTalkwith = false;
-            npc1 = null;  // 取消 NPC 的引用
-            Debug.Log("离开 NPC 交互范围");
+            npc1 = null;
 
-            // **隐藏交互 UI**
             if (interactIcon != null)
             {
                 interactIcon.SetActive(false);
@@ -182,10 +209,8 @@ public class Player_PickUP : MonoBehaviour
         if (other.CompareTag("powerswitch"))
         {
             canSolvePuzzle = false;
-            currentSwitch = null; // 取消开关的引用
-            Debug.Log("离开谜题交互范围");
+            currentSwitch = null;
 
-            // **隐藏交互 UI**
             if (interactIcon != null)
             {
                 interactIcon.SetActive(false);
@@ -193,36 +218,26 @@ public class Player_PickUP : MonoBehaviour
         }
     }
 
-
-
     void TogglePuzzle()
     {
-     
         bool isActive = puzzleUI.activeSelf;
         puzzleUI.SetActive(!isActive);
 
         if (isActive)
         {
-            // 关闭 UI，恢复游戏 & 锁定鼠标 & 重新启用角色控制
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
-            // 重新启用玩家移动和视角
             GetComponent<PlayerController>().enabled = true;
         }
         else
         {
-            // 打开 UI，暂停游戏 & 释放鼠标 & 停止角色控制
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-
-            // 禁用玩家移动和视角控制
             GetComponent<PlayerController>().enabled = false;
         }
 
         Debug.Log("Puzzle UI 状态：" + puzzleUI.activeSelf);
     }
-
 }

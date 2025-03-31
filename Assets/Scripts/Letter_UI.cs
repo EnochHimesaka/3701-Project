@@ -1,19 +1,24 @@
 using UnityEngine;
-using UnityEngine.UI; // 确保引入 UI 命名空间
+using UnityEngine.UI;
+using System.Collections;
 
-public class Letter_UI : Interactable  // 继承 Interactable
+public class Letter_UI : Interactable
 {
-    public GameObject paperUI;  // 绑定 UI 面板
+    public GameObject paperUI;
     private bool isPlayerNearby = false;
+
+    public Light[] sceneLights;  // **存多个灯光对象**
+    public GameObject powerSwitch; // 断电开关
 
     void Start()
     {
-        paperUI.SetActive(false); // 确保 UI 初始时是隐藏的
+        paperUI.SetActive(false);
+        powerSwitch.SetActive(false); // 初始时锁定电源开关
     }
 
     void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E)) // 按 E 打开 Paper
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
         {
             TogglePaperUI();
         }
@@ -22,22 +27,38 @@ public class Letter_UI : Interactable  // 继承 Interactable
     private void TogglePaperUI()
     {
         bool isActive = paperUI.activeSelf;
-        paperUI.SetActive(!isActive);  // 切换 UI 显示/隐藏
+        paperUI.SetActive(!isActive);
 
         if (!isActive)
         {
-            Time.timeScale = 0f; // 暂停游戏（可选）
+            Time.timeScale = 0f; // 暂停游戏
         }
         else
         {
             Time.timeScale = 1f; // 继续游戏
+            StartCoroutine(StartBlackout()); // 关闭 UI 后触发停电倒计时
         }
     }
 
-    // 复写 Interactable 的 OnTriggerEnter 以增加额外的功能
+    private IEnumerator StartBlackout()
+    {
+        yield return new WaitForSeconds(30f); // **等待10秒**
+
+        // **关闭所有灯光**
+        foreach (Light light in sceneLights)
+        {
+            if (light != null)
+            {
+                light.enabled = false;
+            }
+        }
+
+        powerSwitch.SetActive(true); // **解锁开关**
+    }
+
     protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other); // 让准星变色
+        base.OnTriggerEnter(other);
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = true;
@@ -46,7 +67,7 @@ public class Letter_UI : Interactable  // 继承 Interactable
 
     protected override void OnTriggerExit(Collider other)
     {
-        base.OnTriggerExit(other); // 让准星恢复默认颜色
+        base.OnTriggerExit(other);
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = false;

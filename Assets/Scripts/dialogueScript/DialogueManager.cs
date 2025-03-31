@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
+using System.Collections.Generic;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -12,15 +12,16 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public GameObject DialoguePanel;
 
-    public GameObject choicePanel; // 选项 UI
-    public Button choiceButton1; // 选项 1
-    public Button choiceButton2; // 选项 2
+    public GameObject choicePanel;
+    public Button choiceButton1;
+    public Button choiceButton2;
 
-    public float typingSpeed = 0.05f;  // 打字速度
-    public float sentenceDelay = 1.5f; // 句子播放完后等待时间
+    public float typingSpeed = 0.05f;
+    public float sentenceDelay = 1.5f;
     private Coroutine typingCoroutine;
-    private bool isTyping = false;  // 是否正在打字
-    private bool isDialogueActive = false; // 对话是否进行中
+    private bool isTyping = false;
+    private bool isDialogueActive = false;
+
 
     void Awake()
     {
@@ -33,7 +34,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        if (isDialogueActive) return; // 防止重复触发对话
+        if (isDialogueActive) return;
 
         isDialogueActive = true;
         nameText.text = dialogue.name;
@@ -47,7 +48,6 @@ public class DialogueManager : MonoBehaviour
         DialoguePanel.SetActive(true);
         Debug.Log("开始对话：" + dialogue.name);
 
-        // **等待玩家按 E 触发第一句话**
         StartCoroutine(WaitForFirstInput());
     }
 
@@ -55,10 +55,10 @@ public class DialogueManager : MonoBehaviour
     {
         while (!Input.GetKeyDown(KeyCode.E))
         {
-            yield return null; // 等待玩家按 E
+            yield return null;
         }
 
-        DisplayNextSentence(); // 触发第一句
+        DisplayNextSentence();
     }
 
     public void DisplayNextSentence()
@@ -71,16 +71,17 @@ public class DialogueManager : MonoBehaviour
 
         string sentence = sentences.Dequeue();
 
+        // 设置名字切换（你可以自由扩展）
         if (id == 1)
         {
             nameText.text = "Noa";
         }
 
-        // **如果是第二句话，暂停并显示选项**
-        if (id == 1)
+        // 触发选项（句子以 "CHOICE:" 开头）
+        if (sentence.StartsWith("CHOICE:"))
         {
-            ShowChoices();
-            return; // 暂停对话，等待玩家选择
+            ShowChoices(sentence.Substring(7)); // 去掉 "CHOICE:"，只显示文本
+            return;
         }
 
         StartCoroutine(DisplayNextSentenceAuto(sentence));
@@ -90,16 +91,18 @@ public class DialogueManager : MonoBehaviour
     IEnumerator DisplayNextSentenceAuto(string sentence)
     {
         typingCoroutine = StartCoroutine(TypeSentence(sentence));
-        yield return typingCoroutine; // 等待当前句子播放完
-        yield return new WaitForSeconds(sentenceDelay); // 额外等待时间
+        yield return typingCoroutine;
+        yield return new WaitForSeconds(sentenceDelay);
 
         if (sentences.Count > 0)
         {
-            DisplayNextSentence(); // 自动播放下一句
+            DisplayNextSentence();
+            choicePanel.SetActive(false);
         }
         else
         {
             EndDialogue();
+            choicePanel.SetActive(false);
         }
     }
 
@@ -119,23 +122,27 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        Debug.Log("对话结束，隐藏对话框");
+
         DialoguePanel.SetActive(false);
         isDialogueActive = false;
-        choicePanel.SetActive(false); // 确保选项 UI 也关闭
+        choicePanel.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    // **显示对话选项**
-    void ShowChoices()
+    void ShowChoices(string question)
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         choicePanel.SetActive(true);
 
-        // 设置选项按钮事件
+        dialogueText.text = question;
+
+        // 设置两个示例选项（你可以自定义扩展）
+        choiceButton1.GetComponentInChildren<Text>().text = "选项一";
+        choiceButton2.GetComponentInChildren<Text>().text = "选项二";
+
         choiceButton1.onClick.RemoveAllListeners();
         choiceButton2.onClick.RemoveAllListeners();
 
@@ -143,16 +150,17 @@ public class DialogueManager : MonoBehaviour
         choiceButton2.onClick.AddListener(() => ChooseOption(2));
     }
 
-    // **玩家选择对话选项**
     void ChooseOption(int option)
     {
-        Debug.Log("玩家选择了选项：" + option);
-
+       
+        choicePanel.SetActive(false);
         choicePanel.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // 继续播放对话
+
+
+        // 继续播放后续句子
         DisplayNextSentence();
     }
 }
