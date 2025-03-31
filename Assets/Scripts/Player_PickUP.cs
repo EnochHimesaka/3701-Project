@@ -159,28 +159,25 @@ public class Player_PickUP : MonoBehaviour
 
         if (other.CompareTag("powerswitch"))
         {
+            currentSwitch = other.gameObject;
+
+           
+            if (interactIcon != null)
+            {
+                interactIcon.SetActive(true);
+            }
+
+           
             if (haswrench > 0 && hasScrewdriver)
             {
                 canSolvePuzzle = true;
-                currentSwitch = other.gameObject;
-
-                if (interactIcon != null)
-                {
-                    interactIcon.SetActive(true);
-                }
             }
             else
             {
-                Debug.Log("缺少工具，无法打开电源箱！");
                 canSolvePuzzle = false;
-                currentSwitch = null;
-
-                if (interactIcon != null)
-                {
-                    interactIcon.SetActive(false);
-                }
             }
         }
+
     }
 
     private void OnTriggerExit(Collider other)
