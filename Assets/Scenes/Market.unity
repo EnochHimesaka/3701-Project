@@ -33671,11 +33671,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_LocalRotation.w
-<<<<<<< Updated upstream
-      value: 0.99477184
-=======
       value: 0.99318564
->>>>>>> Stashed changes
+
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_LocalRotation.x
@@ -33683,11 +33680,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_LocalRotation.y
-<<<<<<< Updated upstream
-      value: -0.10212225
-=======
       value: -0.11654348
->>>>>>> Stashed changes
+
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_LocalRotation.z
@@ -33699,11 +33693,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-<<<<<<< Updated upstream
-      value: -11.723
-=======
       value: -13.385
->>>>>>> Stashed changes
+
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f949107ad6ac924c90fb1896cda58f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
