@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class TriggerStopZone : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("npc1"))
@@ -21,6 +22,8 @@ public class TriggerStopZone : MonoBehaviour
                 // 设置 Idle 状态
                 animator.SetBool("isWalking",false);
             }
+
+           
         }
     }
 
