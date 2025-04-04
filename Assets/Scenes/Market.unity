@@ -3536,7 +3536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.9, y: -24}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288563442
@@ -3559,7 +3559,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press E quit go to the door
+  m_text: "Press [E] to quit \ngo to the door"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3569,8 +3569,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3587,15 +3587,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 47
+  m_fontSizeBase: 47
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3625,7 +3625,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -97.0475, y: -221.24222, z: 232.15585, w: -148.9124}
+  m_margin: {x: -179.36894, y: 94.99543, z: -179.4248, w: -148.9124}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6783,7 +6783,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 73ec94799098f4b4888a614c7187e3e6, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1312742027768093315, guid: 681a1765a1ecfd64797a9b90be5c9c8a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 681a1765a1ecfd64797a9b90be5c9c8a, type: 3}
@@ -9625,12 +9626,11 @@ MonoBehaviour:
   dialogue:
     name: SHERRI
     sentences:
-    - 'Gril : Are you awake?'
-    - 'Gril : The teacher asked me to help you deliver your homework'
-    - CHOICE:What do you want to do next?
-    - 'Boy: Well, this store is owned by my family, and the uncle and the aunt are
-      my parents. They are out for business.'
-    - 'Boy: Seems that you are looking for something, how can I help you?'
+    - 'Gril : You at last wake up. '
+    - 'Gril : There is a serious bug in the virtual world system. '
+    - 'The whole world is about to collapse. '
+    - 'You need to find a fix as soon as possible. '
+    - 'Fix the electric box with wrench and screwdriver. '
   canTalkAgain: 0
 --- !u!65 &761305544
 BoxCollider:
@@ -9691,7 +9691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 486b99ae38fdecc4f9605ed01d5dd9e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d32b598fc64e8cf4e94e93d219c13fcc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9718,14 +9718,14 @@ RectTransform:
   m_GameObject: {fileID: 766303215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1901448826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 72.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &777325840
@@ -19926,7 +19926,7 @@ RectTransform:
   m_GameObject: {fileID: 1181354148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 14.993993, y: 4.9008, z: 4.9008}
+  m_LocalScale: {x: 4, y: 4, z: 4.9008}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 288563441}
@@ -19935,7 +19935,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -110, y: 138}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 300.31, y: 241.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181354150
 MonoBehaviour:
@@ -22178,9 +22178,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1901448826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1198, y: -547}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 218, y: 173}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1419614213
@@ -35165,9 +35165,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1901448826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -958, y: -537}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 458, y: 183}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051660134
