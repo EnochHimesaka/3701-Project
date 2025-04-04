@@ -1,27 +1,37 @@
-using UnityEngine;
-using UnityEngine.UI; // �����ʹ�� TextMeshPro ��ĳ� using TMPro;
+﻿using UnityEngine;
+using UnityEngine.UI; // 如果你使用 TextMeshPro 请改成 using TMPro;
 
 public class BookTrigger : MonoBehaviour
 {
-    public GameObject bookUI;       // UI���
-    public Text bookText;           // Ҫ��ʾ�����֣������TextMeshProUGUI��������ͣ�
-
+    public GameObject bookUI;         // UI面板
+    public Text bookText;             // 显示文字（如使用TextMeshPro请改类型）
+    public GameObject interactHint;   // 👈 提示图片，例如“按E查看”
 
     private bool isPlayerInside = false;
+
+    void Start()
+    {
+        if (interactHint != null)
+        {
+            interactHint.SetActive(false); // 开始时隐藏提示图标
+        }
+
+        if (bookUI != null)
+        {
+            bookUI.SetActive(false); // 默认隐藏书本UI
+        }
+    }
 
     void Update()
     {
         if (isPlayerInside && Input.GetKeyDown(KeyCode.E))
         {
-            if (!bookUI.activeSelf)
-            {
-                bookUI.SetActive(true);
-                //bookText.text = content;
-            }
-            else
-            {
-                bookUI.SetActive(false);
-            }
+            bool isOpen = bookUI.activeSelf;
+            bookUI.SetActive(!isOpen);
+
+            // 打开书的时候隐藏交互提示
+            if (interactHint != null)
+                interactHint.SetActive(isOpen == false);
         }
     }
 
@@ -30,6 +40,9 @@ public class BookTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInside = true;
+
+            if (interactHint != null)
+                interactHint.SetActive(true);
         }
     }
 
@@ -38,7 +51,12 @@ public class BookTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInside = false;
-            bookUI.SetActive(false);
+
+            if (interactHint != null)
+                interactHint.SetActive(false);
+
+            if (bookUI != null)
+                bookUI.SetActive(false);
         }
     }
 }
