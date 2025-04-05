@@ -7,13 +7,13 @@ public class Letter_UI : Interactable
     public GameObject paperUI;
     private bool isPlayerNearby = false;
 
-    public Light[] sceneLights;  // **´æ¶à¸öµÆ¹â¶ÔÏó**
-    public GameObject powerSwitch; // ¶Ïµç¿ª¹Ø
+    public Light[] sceneLights;  // **ï¿½ï¿½ï¿½ï¿½ï¿½Æ¹ï¿½ï¿½ï¿½ï¿½**
+    public GameObject powerSwitch; // ï¿½Ïµç¿ªï¿½ï¿½
 
     void Start()
     {
         paperUI.SetActive(false);
-        powerSwitch.SetActive(false); // ³õÊ¼Ê±Ëø¶¨µçÔ´¿ª¹Ø
+        powerSwitch.SetActive(false); // ï¿½ï¿½Ê¼Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½
     }
 
     void Update()
@@ -31,20 +31,20 @@ public class Letter_UI : Interactable
 
         if (!isActive)
         {
-            Time.timeScale = 0f; // ÔÝÍ£ÓÎÏ·
+            Time.timeScale = 0f; // ï¿½ï¿½Í£ï¿½ï¿½Ï·
         }
         else
         {
-            Time.timeScale = 1f; // ¼ÌÐøÓÎÏ·
-            StartCoroutine(StartBlackout()); // ¹Ø±Õ UI ºó´¥·¢Í£µçµ¹¼ÆÊ±
+            Time.timeScale = 1f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·
+            StartCoroutine(StartBlackout()); // ï¿½Ø±ï¿½ UI ï¿½ó´¥·ï¿½Í£ï¿½çµ¹ï¿½ï¿½Ê±
         }
     }
 
     private IEnumerator StartBlackout()
     {
-        yield return new WaitForSeconds(20f); // **µÈ´ý10Ãë**
+        yield return new WaitForSeconds(27f); // **ï¿½È´ï¿½10ï¿½ï¿½**
 
-        // **¹Ø±ÕËùÓÐµÆ¹â**
+        // **ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ÐµÆ¹ï¿½**
         foreach (Light light in sceneLights)
         {
             if (light != null)
@@ -53,7 +53,7 @@ public class Letter_UI : Interactable
             }
         }
 
-        powerSwitch.SetActive(true); // **½âËø¿ª¹Ø**
+        powerSwitch.SetActive(true); // **ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**
     }
 
     protected override void OnTriggerEnter(Collider other)
