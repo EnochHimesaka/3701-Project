@@ -25,7 +25,7 @@ public class JumpLevel : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(0))
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(LoadSceneWithFade());
         }
