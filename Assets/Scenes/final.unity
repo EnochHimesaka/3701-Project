@@ -4669,7 +4669,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1410592849}
     m_Modifications:
     - target: {fileID: 13706114166308546, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: lookSpeed
@@ -5233,7 +5233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5849044
+      value: 1.5849046
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalScale.y
@@ -5245,11 +5245,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -32
+      value: -992
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.029
+      value: -531.971
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7715,6 +7715,11 @@ MonoBehaviour:
   - {fileID: 877188432}
   bulletForce: 1000
   maxShootInterval: 5
+--- !u!4 &784958272 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
+  m_PrefabInstance: {fileID: 601223814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &789500086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12589,6 +12594,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 784958272}
   - {fileID: 675066972}
   - {fileID: 2040656925}
   - {fileID: 882703444}
@@ -18359,7 +18365,6 @@ SceneRoots:
   - {fileID: 170198217}
   - {fileID: 1410592849}
   - {fileID: 1900572992}
-  - {fileID: 601223814}
   - {fileID: 938364415}
   - {fileID: 1482271326}
   - {fileID: 2098313140}
