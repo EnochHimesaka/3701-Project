@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class ObjectGrabbable : MonoBehaviour
 
@@ -8,11 +9,14 @@ public class ObjectGrabbable : MonoBehaviour
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
 
+   
+
     private void Awake()
     {
         objectRigidbody = GetComponent<Rigidbody>();
     }
 
+    
     public void Grab(Transform objectGrabPointTransfrom)
     {
         this.objectGrabPointTransform = objectGrabPointTransfrom;
@@ -34,4 +38,6 @@ public class ObjectGrabbable : MonoBehaviour
             objectRigidbody.MovePosition(newPosition);
         }
     }
+
+   
 }
