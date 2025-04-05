@@ -17,6 +17,8 @@ public class InteractableConsoleUI : MonoBehaviour
     public AudioSource qidong_audio;
     public AudioSource bgm;
     public GameObject creditPanel;
+    public GameObject imagePanel;
+    public GameObject leiwenliang;
 
     void Start()
     {
@@ -48,6 +50,8 @@ public class InteractableConsoleUI : MonoBehaviour
         yuanshen_audio.Play();
         qidong_audio.Play();
 
+        imagePanel.SetActive(false);
+        leiwenliang.SetActive(false);
         StartCoroutine(backtoMain());
 
 

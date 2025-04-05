@@ -139,7 +139,7 @@ public class Player_PickUP : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("items1") || other.CompareTag("flashlight") || other.CompareTag("Sd"))
+        if (other.CompareTag("items1") || other.CompareTag("flashlight") || other.CompareTag("Sd") || other.CompareTag("redcube") || other.CompareTag("bluecube"))
         {
             wrench = other.gameObject;
             canPickUp = true;
