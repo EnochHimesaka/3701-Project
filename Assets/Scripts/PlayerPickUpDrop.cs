@@ -12,7 +12,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(0))
         {
             if (objectGrabbable == null)
             {

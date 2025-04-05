@@ -34,9 +34,11 @@ public class Player_PickUP : MonoBehaviour
     //-----------------------audio
     public AudioSource pickSFX;
     public AudioSource talkSFX;
+
     void Start()
     {
-        if (image != null) {
+        if (image != null)
+        {
             image.gameObject.SetActive(false);
         }
         if (interactIcon != null)
@@ -56,6 +58,7 @@ public class Player_PickUP : MonoBehaviour
             flashlight.transform.rotation = flashlightSlot.rotation;
         }
 
+        // ✅ 用 E 键进入/退出谜题，避免鼠标左键误触
         if (canSolvePuzzle && Input.GetKeyDown(KeyCode.E))
         {
             pickSFX.Play();
@@ -65,7 +68,7 @@ public class Player_PickUP : MonoBehaviour
 
     public void canTalk()
     {
-        if (canTalkwith && Input.GetKeyDown(KeyCode.F))
+        if (canTalkwith && Input.GetMouseButtonDown(0))
         {
             dialoguePanel.SetActive(true);
             print("DIALOGUE ");
@@ -75,7 +78,7 @@ public class Player_PickUP : MonoBehaviour
 
     void canPick()
     {
-        if (canPickUp && Input.GetKeyDown(KeyCode.E))
+        if (canPickUp && Input.GetMouseButtonDown(0))
         {
             pickSFX.Play();
             canPickUp = false;
@@ -100,7 +103,6 @@ public class Player_PickUP : MonoBehaviour
                 hasScrewdriver = true;
                 interactIcon.SetActive(false);
                 image2.gameObject.SetActive(true);
-          
             }
         }
     }
@@ -163,13 +165,11 @@ public class Player_PickUP : MonoBehaviour
         {
             currentSwitch = other.gameObject;
 
-           
             if (interactIcon != null)
             {
                 interactIcon.SetActive(true);
             }
 
-           
             if (haswrench > 0 && hasScrewdriver)
             {
                 canSolvePuzzle = true;
@@ -179,7 +179,6 @@ public class Player_PickUP : MonoBehaviour
                 canSolvePuzzle = false;
             }
         }
-
     }
 
     private void OnTriggerExit(Collider other)

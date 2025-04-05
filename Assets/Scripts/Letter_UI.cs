@@ -18,7 +18,7 @@ public class Letter_UI : Interactable
 
     void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerNearby && Input.GetMouseButtonDown(0))
         {
             TogglePaperUI();
         }
@@ -42,7 +42,7 @@ public class Letter_UI : Interactable
 
     private IEnumerator StartBlackout()
     {
-        yield return new WaitForSeconds(30f); // **等待10秒**
+        yield return new WaitForSeconds(20f); // **等待10秒**
 
         // **关闭所有灯光**
         foreach (Light light in sceneLights)
