@@ -3,13 +3,15 @@ using UnityEngine;
 public class SmallBlockFading : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GameObject teleporter;
+    public GameObject teleporter, noCubeCollidorBlock;
     private float smallTimer, smallerScale;
     private Vector3 originalScale;
     void Start()
     {
         originalScale = transform.localScale;
         smallerScale = 1;
+        noCubeCollidorBlock = GameObject.FindGameObjectWithTag("NoCubeCollidor");
+        Physics.IgnoreCollision(GetComponent<BoxCollider>(), noCubeCollidorBlock.GetComponent<BoxCollider>(), true);
     }
 
     // Update is called once per frame

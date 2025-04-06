@@ -16,6 +16,7 @@ TagManager:
   - WayPoints
   - StopZone
   - BottomFloor
+  - NoCubeCollidor
   layers:
   - Default
   - TransparentFX
