@@ -3683,8 +3683,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3721,7 +3721,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -97.0475, y: -278.7753, z: 108.506775, w: -148.9124}
+  m_margin: {x: -97.0475, y: -278.7753, z: 108.506775, w: 89.730286}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9561,7 +9561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 0}
-  interactPrompt: {fileID: 1321757116}
+  interactPrompt: {fileID: 766303215}
   nextSceneName: Lab
   blackScreen: {fileID: 0}
   fadeDuration: 1.5
@@ -9839,8 +9839,11 @@ MonoBehaviour:
     - Looks like we're running out of time
     - "No time to explain\u2014just trust me!!"
     - Let's try to restore power
+    - Before repairing the electrical box, please find two items. A flashlight may
+      help you.
     - We need to get to the lab, fast!!!
   canTalkAgain: 0
+  interactHintUI: {fileID: 766303215}
 --- !u!65 &761305544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22466,7 +22469,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: press "E" to open the powerswitch and talk to npc
+  m_text: When you click the mouse and it doesn't show up, try "E". Too lazy to change
+    it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

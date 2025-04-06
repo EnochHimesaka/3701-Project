@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class npcDialogue : MonoBehaviour
 {
@@ -9,11 +10,26 @@ public class npcDialogue : MonoBehaviour
     private bool hasTalked = false; // 防止重复对话
     public bool canTalkAgain = false; // 任务解锁后是否可以重新对话
 
+    public GameObject interactHintUI; // ✅ 提示图标对象（可交互时显示）
+
+    private void Start()
+    {
+        if (interactHintUI != null)
+        {
+            interactHintUI.SetActive(false); // 初始隐藏
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            canTalk = true; // 进入范围，允许交谈
+            canTalk = true;
+
+            if (interactHintUI != null && (!hasTalked || canTalkAgain))
+            {
+                interactHintUI.SetActive(true); // ✅ 显示交互提示
+            }
         }
     }
 
@@ -21,7 +37,12 @@ public class npcDialogue : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            canTalk = false; // 离开范围，取消交谈权限
+            canTalk = false;
+
+            if (interactHintUI != null)
+            {
+                interactHintUI.SetActive(false); // ✅ 离开时隐藏
+            }
         }
     }
 
@@ -31,7 +52,12 @@ public class npcDialogue : MonoBehaviour
         if (canTalk && !hasTalked && Input.GetKeyDown(KeyCode.E))
         {
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-            hasTalked = true; // 记录已经对话，防止重复
+            hasTalked = true;
+
+            if (interactHintUI != null)
+            {
+                interactHintUI.SetActive(false); // ✅ 开始对话后隐藏提示
+            }
         }
     }
 
@@ -39,6 +65,6 @@ public class npcDialogue : MonoBehaviour
     {
         Debug.Log("任务完成，NPC可以进行新对话！");
         canTalkAgain = true;
-        hasTalked = false; // 允许新对话
+        hasTalked = false;
     }
 }
