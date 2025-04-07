@@ -1845,6 +1845,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 318443755}
+    - target: {fileID: 6595930731681099989, guid: 3dd3bf03b8cea474c86157ab48fbf7d9, type: 3}
+      propertyPath: m_Text
+      value: "Planning: \r\nWenliang Lei\r\nYudong Zhang\nYipeng Yang\r\n\r\nPlot:
+        \r\nYudong Zhang\nYipeng Yang\nWenliang Lei\r\n\r\nLevel Design: \r\nYudong
+        Zhang\r\nWenliang Lei\nYipeng Yang\r\n\r\nArt: \r\nYipeng Yang\r\nYudong
+        Zhang\r\n\r\nEnvironment: \r\nYipeng Yang\r\n\r\n2D: \r\nYipeng Yang\r\nYudong
+        Zhang\r\n\r\n3D: \r\nYudong Zhang\r\nYipeng Yang\r\n\r\nCharacters: \r\nYudong
+        Zhang\r\nWenliang Lei\r\n\r\nProgramming: \r\nWenliang Lei\r\nYudong Zhang\r\nRaaghavnethan
+        Rubachandran\r\n\r\nAnimation: \r\nYipeng Yang\r\nYudong Zhang\r\n\r\nSound
+        and Music: \r\nYudong Zhang\r\n\r\nTesting: \r\nWenliang Lei\r\nYudong Zhang\r\nYipeng
+        Yang\r\nRaaghavnethan Rubachandran"
+      objectReference: {fileID: 0}
     - target: {fileID: 9171563998993390549, guid: 3dd3bf03b8cea474c86157ab48fbf7d9, type: 3}
       propertyPath: audio
       value: 
