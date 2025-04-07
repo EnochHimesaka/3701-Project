@@ -1,32 +1,34 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class InteractableConsoleUI : MonoBehaviour
 {
-    public GameObject uiPanel;             // ����������ť��UI���
-   
-
-    public Button openButton;              // ����һ��UI�İ�ť
-    
+    public GameObject uiPanel;             // UI面板
+    public Button openButton;              // 普通按钮（将会变成退出）
+    public Button secretButton;            // 真结局按钮
 
     private bool isPlayerInRange = false;
-    public Image yuanshen_image;
-    public AudioSource yuanshen_audio;
-    public AudioSource qidong_audio;
-    public AudioSource bgm;
-    public GameObject creditPanel;
+    private bool hasEnabledSecretButton = false;
+
+    public Image whiteScreenImage;         // 全屏白图
+    public AudioSource bgm;                // 背景音乐
 
     void Start()
     {
         if (uiPanel != null) uiPanel.SetActive(false);
 
-      
-      
-       
+        // 设置白图初始透明
+        if (whiteScreenImage != null)
+        {
+            whiteScreenImage.canvasRenderer.SetAlpha(0f);
+        }
 
-        yuanshen_image.canvasRenderer.SetAlpha(0.0f);
+        // 初始隐藏真结局按钮
+        if (secretButton != null)
+        {
+            secretButton.gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -39,50 +41,70 @@ public class InteractableConsoleUI : MonoBehaviour
                 UnlockCursor();
             }
         }
+
+        // USB 条件达成时显示隐藏结局按钮
+        if (!hasEnabledSecretButton && USB.usbCount > 0)
+        {
+            Debug.Log("USB 已获取，显示隐藏结局按钮！");
+            if (secretButton != null)
+            {
+                secretButton.gameObject.SetActive(true);
+                hasEnabledSecretButton = true;
+            }
+        }
     }
 
-    public void Openyuanshen()
+    public void TriggerSecretEnding()
     {
-          yuanshen_image.CrossFadeAlpha(1, 1, true);
-         bgm.Stop();
-        yuanshen_audio.Play();
-        qidong_audio.Play();
-
-        StartCoroutine(backtoMain());
-
-
+        StartCoroutine(SecretEndingSequence());
     }
-    IEnumerator backtoMain()
+
+    IEnumerator SecretEndingSequence()
     {
-        yield return new WaitForSeconds(10.0f);
-        BacktoMain();
-    }
+        // 白屏淡入
+        if (whiteScreenImage != null)
+        {
+            whiteScreenImage.CrossFadeAlpha(1f, 2f, true);
+        }
 
-    void BacktoMain()
-    {
-        SceneManager.LoadScene("Start");
-        creditPanel.SetActive(true);
-    }
+        if (bgm != null)
+        {
+            bgm.Stop();
+        }
 
+        yield return new WaitForSeconds(2f);
+
+        // 将 openButton 替换为“退出游戏”
+        if (openButton != null)
+        {
+            //openButton.GetComponentInChildren<Text>().text = "退出游戏";
+            openButton.onClick.RemoveAllListeners();
+            openButton.onClick.AddListener(QuitGame);
+        }
+
+        // 隐藏 secretButton
+        if (secretButton != null)
+        {
+            secretButton.gameObject.SetActive(false);
+        }
+    }
 
     public void QuitGame()
     {
         Application.Quit();
-        Debug.Log("Quit Game"); 
+        Debug.Log("Quit Game");
     }
 
     void UnlockCursor()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        //Time.timeScale = 0f; // ��ѡ����ͣ��Ϸ
     }
 
     void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        //Time.timeScale = 1f;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -98,7 +120,9 @@ public class InteractableConsoleUI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            if (uiPanel != null) uiPanel.SetActive(false);
+            if (uiPanel != null)
+                uiPanel.SetActive(false);
+
             LockCursor();
         }
     }

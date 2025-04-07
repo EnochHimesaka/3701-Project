@@ -1416,7 +1416,7 @@ Transform:
   m_GameObject: {fileID: 73056024}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 9.72, y: -0, z: -2.22}
+  m_LocalPosition: {x: -46.58, y: -0.35, z: -22.57}
   m_LocalScale: {x: 100, y: 99.99999, z: 99.99999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5146,7 +5146,7 @@ RectTransform:
   m_GameObject: {fileID: 190150444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.9759, y: 4.9566, z: 1}
+  m_LocalScale: {x: 12.797084, y: 6.3583264, z: 1.2828}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1430956617}
@@ -5154,7 +5154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.566584, y: 0.00038528}
+  m_AnchoredPosition: {x: -19.529, y: 0.00038528}
   m_SizeDelta: {x: 37.4072, y: 82.286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &190150446
@@ -6221,7 +6221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1147fcbaf35f1499eee49b6fe4cced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bookUI: {fileID: 1998646505}
+  bookUI: {fileID: 190150444}
   interactHint: {fileID: 882703443}
 --- !u!1 &242888228
 GameObject:
@@ -12068,7 +12068,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 465678885}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 943704881}
+        m_TargetAssemblyTypeName: JumpToLevel, Assembly-CSharp
+        m_MethodName: JumpToScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &465678885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14673,7 +14685,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 13706114166308546, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: lookSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 260614003003093219, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15249,15 +15261,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -59.22
+      value: -31.2
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.84
+      value: 8.098
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.695
+      value: 5.56
       objectReference: {fileID: 0}
     - target: {fileID: 4040468640724077119, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16258,9 +16270,7 @@ MonoBehaviour:
     - but wait!!!
     - ........
     - will I get erased too?
-    - Unless...
     - ........
-    - Unless we could patch the timeline together?
     - Maybe... just maybe, if we together, this world still has a chance?
   canTalkAgain: 0
   interactHintUI: {fileID: 882703443}
@@ -19484,12 +19494,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiPanel: {fileID: 280577927}
-  openButton: {fileID: 465678884}
-  yuanshen_image: {fileID: 0}
-  yuanshen_audio: {fileID: 0}
-  qidong_audio: {fileID: 0}
+  openButton: {fileID: 1034835670}
+  secretButton: {fileID: 2035019930}
+  whiteScreenImage: {fileID: 0}
   bgm: {fileID: 0}
-  creditPanel: {fileID: 0}
 --- !u!1 &746438749 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 5c776899fe0928242bb27cc11ad3f81e, type: 3}
@@ -22762,7 +22770,7 @@ RectTransform:
   m_GameObject: {fileID: 882703443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3805355, y: 0.3805355, z: 0.3805355}
+  m_LocalScale: {x: 0.63617927, y: 0.63617927, z: 0.63617927}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1410592849}
@@ -23988,6 +23996,51 @@ Transform:
   m_Children:
   - {fileID: 1319517866}
   m_Father: {fileID: 422446732}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &943704880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 943704882}
+  - component: {fileID: 943704881}
+  m_Layer: 0
+  m_Name: jump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &943704881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943704880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edfef5d9410975f41be7541dcdc9499b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: end
+--- !u!4 &943704882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943704880}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 541.20154, y: 187.33928, z: 130.17896}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &949499975
 GameObject:
@@ -30323,6 +30376,7 @@ MonoBehaviour:
     - Whole chunks of the floor are just... gone!!!
     - Try to press the left mouse button to shoot
     - We need to clear a path to the console!!!
+    - I have a map that has not been destroyed yet. Press M to view it.
   canTalkAgain: 0
   interactHintUI: {fileID: 882703443}
 --- !u!4 &1251730472
@@ -34416,7 +34470,6 @@ RectTransform:
   - {fileID: 190150445}
   - {fileID: 280577928}
   - {fileID: 1298332325}
-  - {fileID: 1503277650}
   - {fileID: 195638056}
   - {fileID: 120209197}
   - {fileID: 1235272084}
@@ -34972,8 +35025,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The main console is to manually control the running of the world, it is
-    the only place of connection to the real world.
+  m_text: Now you have come to the core terminal of this world. The computer in front
+    is the core. Press "E" to start it, close it or continue. It's all up to you.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36968,81 +37021,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 676730576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1503277649
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1503277650}
-  - component: {fileID: 1503277652}
-  - component: {fileID: 1503277651}
-  m_Layer: 5
-  m_Name: end
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1503277650
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503277649}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1410592849}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1503277651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503277649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f0658e284c798f94b81112e50d6fe41e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1503277652
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503277649}
-  m_CullTransparentMesh: 1
 --- !u!1 &1505837516
 GameObject:
   m_ObjectHideFlags: 0
@@ -39865,8 +39843,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The project is designed to allow people to see people they can't see in
-    a virtual world, even if it's just a dream-like place.
+  m_text: Now you have come to the core terminal of this world. It is up to you to
+    close it or continue.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -41363,7 +41341,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1725560493}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 742194484}
+        m_TargetAssemblyTypeName: InteractableConsoleUI, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1725560493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52145,7 +52135,7 @@ RectTransform:
   m_GameObject: {fileID: 1998646505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.9759, y: 4.9566, z: 1}
+  m_LocalScale: {x: 12.620511, y: 6.270595, z: 1.2651}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1666450425}
@@ -52153,7 +52143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.256, y: -8.5114}
+  m_AnchoredPosition: {x: 31.331, y: -8.5114}
   m_SizeDelta: {x: 41.4886, y: 82.9773}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1998646507
@@ -56950,3 +56940,4 @@ SceneRoots:
   - {fileID: 1993910352}
   - {fileID: 162257619}
   - {fileID: 1339749141}
+  - {fileID: 943704882}

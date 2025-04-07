@@ -1505,6 +1505,7 @@ MonoBehaviour:
     - We've got to make it to the last room the lab first
     - that's our only way into the core program!!!
   canTalkAgain: 0
+  interactHintUI: {fileID: 0}
 --- !u!4 &113988120
 Transform:
   m_ObjectHideFlags: 0
@@ -5479,7 +5480,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 13706114166308546, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: lookSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 260614003003093219, guid: c7113cbdabde87b4cb49f436135fac31, type: 3}
       propertyPath: m_LocalPosition.y
